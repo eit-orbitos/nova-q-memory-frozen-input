@@ -1,0 +1,44 @@
+{
+  "record": "NOVA_Q_GRAMMAR_FREEZE_RECORD",
+  "artifact": "LEVEL0_CONSTRAINED_LANGUAGE_V0.1_REV3",
+  "GRAMMAR_FREEZE_STATUS": "FROZEN",
+  "frozen_by": "Toni Mladenovski",
+  "frozen_on": "2026-10-04",
+  "freeze_takes_effect": "on the author's own commit of this record to the public repository",
+  "external_timestamp": "PENDING_GIT_COMMIT",
+  "parent_package": {
+    "repo": "github.com/eit-orbitos/nova-q-memory-frozen-input",
+    "commit": "8b30182f473dda613d041989c833f7795f03e1fa"
+  },
+  "sha256": {
+    "LEVEL0_CONSTRAINED_LANGUAGE_V0.1_REV3.json": "d7a68615f38beac2808936bea9591c2a68fc22e0ae10024159d2a49682252852",
+    "prove_grammar_rev3.py": "fe756bca1050f4cf741723e95e3a02a44559f144810350c6f5e2d9378203d9b2",
+    "MINIMUM_COMPACT_REV3.txt": "45183a5f73dcbf4bc2280da7b4624cc7d628e85e96fd079d6874695cf1200e47",
+    "COMPACT_VALID_REV3.txt": "45183a5f73dcbf4bc2280da7b4624cc7d628e85e96fd079d6874695cf1200e47",
+    "FROZEN_VQ_REFERENCE.json": "4a2e9ea276fbe13113010a2fdd44d63e38bcca701e8207b2b77411cb3063089f",
+    "GRAMMAR_PROOF_REV3.json": "0991f9e9536ce5643f0459b8fe72cda890e1f614928eeb9d3c85d09c3e754da7",
+    "review_grammar_rev3.py": "2826ad8b5056eab75261632215cbee89d26fb4348a79293c46c0c441094fc5cd"
+  },
+  "m0_sha256": "c0f1ffc9bc2679380ee8da77a8e98a0fb2987b606f8b0aaa69a40d4be758d439",
+  "status": [
+    "FROZEN_LANGUAGE_SPEC",
+    "NOT_EVALUATOR_VALIDATION",
+    "NOT_COMPRESSOR_VALIDATION",
+    "NOT_MEMORY_MODEL_PROOF"
+  ],
+  "changelog_notes": [
+    "MINIMUM_COMPACT_REV3.txt is 481 characters / 482 bytes because the degree sign is 2 bytes in UTF-8; the file has no final newline.",
+    "Unit class per production is derived in code from the regex template, and date/number validators are prose in the JSON and implemented in code: non-blocking implementation notes for evaluator V0.3."
+  ],
+  "rules_after_freeze": [
+    "Evaluator V0.3 adapts to this grammar; the grammar is not changed to fit the evaluator.",
+    "Any grammar change requires a new revision, new hashes and a changelog.",
+    "Held-out cases are written after this freeze and are not disclosed before V0.3 is delivered.",
+    "Required: FALSE_ACCEPTS = 0."
+  ],
+  "reviewers": {
+    "builder": "ChatGPT",
+    "adversarial_review": "Claude (no blocker found; hashes reproduced independently)"
+  },
+  "note": "AI agreement is not validation."
+}

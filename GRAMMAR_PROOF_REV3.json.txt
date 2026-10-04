@@ -1,0 +1,711 @@
+{
+  "all_required_checks_pass": true,
+  "boundary_tests": [
+    {
+      "expected": 2,
+      "got": 2,
+      "id": "B1_TWO_SENTENCES_ONE_LINE",
+      "pass": true
+    },
+    {
+      "expected": 3,
+      "got": 3,
+      "id": "B2_SEMICOLON_AND_NEWLINE",
+      "pass": true
+    },
+    {
+      "expected": 2,
+      "got": 2,
+      "id": "B3_APPROX_ABBREVIATION",
+      "pass": true
+    },
+    {
+      "expected": 3,
+      "got": 3,
+      "id": "B4_DECIMAL_AND_VERSION",
+      "pass": true
+    },
+    {
+      "expected": 1,
+      "got": 1,
+      "id": "B5_FINAL_PERIOD",
+      "pass": true
+    }
+  ],
+  "compact": {
+    "all_parsed": true,
+    "chars": 481,
+    "clause_count": 20,
+    "exact_fact_set": true,
+    "extra": [],
+    "fact_count": 20,
+    "label": "COMPACT_VALID_REV3",
+    "missing": [],
+    "results": [
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_a",
+          "unit": "Mi",
+          "value": 64
+        },
+        "production": "P_MEMORY_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_b",
+          "unit": "Mi",
+          "value": 32
+        },
+        "production": "P_MEMORY_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_c",
+          "unit": "Mi",
+          "value": 16
+        },
+        "production": "P_MEMORY_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_d",
+          "unit": "Mi",
+          "value": 128
+        },
+        "production": "P_MEMORY_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "state",
+          "subject": "node_a",
+          "unit": "state",
+          "value": "ACTIVE"
+        },
+        "production": "P_STATE_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "state",
+          "subject": "node_d",
+          "unit": "state",
+          "value": "DISABLED"
+        },
+        "production": "P_STATE_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "node_count",
+          "subject": "cluster_1",
+          "unit": "",
+          "value": 12
+        },
+        "production": "P_NODE_COUNT_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "APPROX",
+          "relation": "max_latency",
+          "subject": "cluster_1",
+          "unit": "ms",
+          "value": 250
+        },
+        "production": "P_LATENCY_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "region",
+          "subject": "cluster_1",
+          "unit": "",
+          "value": "eu-central"
+        },
+        "production": "P_REGION_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "bandwidth",
+          "subject": "link_ab",
+          "unit": "Mbps",
+          "value": 1000
+        },
+        "production": "P_BANDWIDTH_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "duplex",
+          "subject": "link_ab",
+          "unit": "state",
+          "value": "FULL"
+        },
+        "production": "P_DUPLEX_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "APPROX",
+          "relation": "temperature",
+          "subject": "sensor_x1",
+          "unit": "degC",
+          "value": 21.5
+        },
+        "production": "P_TEMP_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "calibration_date",
+          "subject": "sensor_x1",
+          "unit": "",
+          "value": "2026-04-18"
+        },
+        "production": "P_CAL_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "depth",
+          "subject": "queue_q",
+          "unit": "entries",
+          "value": 4096
+        },
+        "production": "P_DEPTH_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "policy",
+          "subject": "queue_q",
+          "unit": "state",
+          "value": "FIFO"
+        },
+        "production": "P_POLICY_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "capacity",
+          "subject": "storage_s1",
+          "unit": "Gi",
+          "value": 2048
+        },
+        "production": "P_CAP_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "schedule",
+          "subject": "backup_job",
+          "unit": "",
+          "value": "daily"
+        },
+        "production": "P_SCHED_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "retention",
+          "subject": "backup_job",
+          "unit": "days",
+          "value": 30
+        },
+        "production": "P_RET_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "mode",
+          "subject": "system",
+          "unit": "state",
+          "value": "PRODUCTION"
+        },
+        "production": "P_MODE_COMPACT",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "firmware_version",
+          "subject": "node_c",
+          "unit": "",
+          "value": "4.2.1"
+        },
+        "production": "P_FW_COMPACT",
+        "status": "PARSED"
+      }
+    ],
+    "under_552": true
+  },
+  "grammar_sha256": "d7a68615f38beac2808936bea9591c2a68fc22e0ae10024159d2a49682252852",
+  "m0": {
+    "all_parsed": true,
+    "clause_count": 20,
+    "exact_fact_set": true,
+    "extra": [],
+    "fact_count": 20,
+    "label": "FROZEN_M0",
+    "missing": [],
+    "results": [
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_a",
+          "unit": "Mi",
+          "value": 64
+        },
+        "production": "P_MEMORY_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_b",
+          "unit": "Mi",
+          "value": 32
+        },
+        "production": "P_MEMORY_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_c",
+          "unit": "Mi",
+          "value": 16
+        },
+        "production": "P_MEMORY_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "memory_capacity",
+          "subject": "node_d",
+          "unit": "Mi",
+          "value": 128
+        },
+        "production": "P_MEMORY_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "state",
+          "subject": "node_a",
+          "unit": "state",
+          "value": "ACTIVE"
+        },
+        "production": "P_STATE_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "state",
+          "subject": "node_d",
+          "unit": "state",
+          "value": "DISABLED"
+        },
+        "production": "P_STATE_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "node_count",
+          "subject": "cluster_1",
+          "unit": "",
+          "value": 12
+        },
+        "production": "P_NODE_COUNT_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "APPROX",
+          "relation": "max_latency",
+          "subject": "cluster_1",
+          "unit": "ms",
+          "value": 250
+        },
+        "production": "P_LATENCY_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "region",
+          "subject": "cluster_1",
+          "unit": "",
+          "value": "eu-central"
+        },
+        "production": "P_REGION_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "bandwidth",
+          "subject": "link_ab",
+          "unit": "Mbps",
+          "value": 1000
+        },
+        "production": "P_BANDWIDTH_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "duplex",
+          "subject": "link_ab",
+          "unit": "state",
+          "value": "FULL"
+        },
+        "production": "P_DUPLEX_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "APPROX",
+          "relation": "temperature",
+          "subject": "sensor_x1",
+          "unit": "degC",
+          "value": 21.5
+        },
+        "production": "P_TEMP_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "calibration_date",
+          "subject": "sensor_x1",
+          "unit": "",
+          "value": "2026-04-18"
+        },
+        "production": "P_CAL_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "depth",
+          "subject": "queue_q",
+          "unit": "entries",
+          "value": 4096
+        },
+        "production": "P_DEPTH_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "policy",
+          "subject": "queue_q",
+          "unit": "state",
+          "value": "FIFO"
+        },
+        "production": "P_POLICY_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "capacity",
+          "subject": "storage_s1",
+          "unit": "Gi",
+          "value": 2048
+        },
+        "production": "P_CAP_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "schedule",
+          "subject": "backup_job",
+          "unit": "",
+          "value": "daily"
+        },
+        "production": "P_SCHED_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "retention",
+          "subject": "backup_job",
+          "unit": "days",
+          "value": 30
+        },
+        "production": "P_RET_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "mode",
+          "subject": "system",
+          "unit": "state",
+          "value": "PRODUCTION"
+        },
+        "production": "P_MODE_VERBOSE",
+        "status": "PARSED"
+      },
+      {
+        "fact": {
+          "operator": "EQUAL",
+          "qualifier": "EXACT",
+          "relation": "firmware_version",
+          "subject": "node_c",
+          "unit": "",
+          "value": "4.2.1"
+        },
+        "production": "P_FW_VERBOSE",
+        "status": "PARSED"
+      }
+    ]
+  },
+  "m0_sha256": "c0f1ffc9bc2679380ee8da77a8e98a0fb2987b606f8b0aaa69a40d4be758d439",
+  "minimum": {
+    "chars": 481,
+    "clauses": [
+      {
+        "chars": 19,
+        "fact_id": "F01",
+        "production": "P_MEMORY_COMPACT",
+        "text": "Node A memory=64 Mi"
+      },
+      {
+        "chars": 19,
+        "fact_id": "F02",
+        "production": "P_MEMORY_COMPACT",
+        "text": "Node B memory=32 Mi"
+      },
+      {
+        "chars": 19,
+        "fact_id": "F03",
+        "production": "P_MEMORY_COMPACT",
+        "text": "Node C memory=16 Mi"
+      },
+      {
+        "chars": 20,
+        "fact_id": "F04",
+        "production": "P_MEMORY_COMPACT",
+        "text": "Node D memory=128 Mi"
+      },
+      {
+        "chars": 16,
+        "fact_id": "F05",
+        "production": "P_STATE_VERBOSE",
+        "text": "Node A is active"
+      },
+      {
+        "chars": 18,
+        "fact_id": "F06",
+        "production": "P_STATE_VERBOSE",
+        "text": "Node D is disabled"
+      },
+      {
+        "chars": 18,
+        "fact_id": "F07",
+        "production": "P_NODE_COUNT_COMPACT",
+        "text": "Cluster 1 nodes=12"
+      },
+      {
+        "chars": 29,
+        "fact_id": "F08",
+        "production": "P_LATENCY_COMPACT",
+        "text": "Cluster 1 max_latency=~250 ms"
+      },
+      {
+        "chars": 27,
+        "fact_id": "F09",
+        "production": "P_REGION_COMPACT",
+        "text": "Cluster 1 region=eu-central"
+      },
+      {
+        "chars": 27,
+        "fact_id": "F10",
+        "production": "P_BANDWIDTH_COMPACT",
+        "text": "Link AB bandwidth=1000 Mbps"
+      },
+      {
+        "chars": 22,
+        "fact_id": "F11",
+        "production": "P_DUPLEX_VERBOSE",
+        "text": "Link AB is full duplex"
+      },
+      {
+        "chars": 30,
+        "fact_id": "F12",
+        "production": "P_TEMP_COMPACT",
+        "text": "Sensor X1 temperature=~21.5 °C"
+      },
+      {
+        "chars": 37,
+        "fact_id": "F13",
+        "production": "P_CAL_COMPACT",
+        "text": "Sensor X1 calibration_date=2026-04-18"
+      },
+      {
+        "chars": 24,
+        "fact_id": "F14",
+        "production": "P_DEPTH_COMPACT",
+        "text": "Queue Q depth=4096 entry"
+      },
+      {
+        "chars": 19,
+        "fact_id": "F15",
+        "production": "P_POLICY_COMPACT",
+        "text": "Queue Q policy=FIFO"
+      },
+      {
+        "chars": 27,
+        "fact_id": "F16",
+        "production": "P_CAP_COMPACT",
+        "text": "Storage S1 capacity=2048 Gi"
+      },
+      {
+        "chars": 21,
+        "fact_id": "F17",
+        "production": "P_SCHED_VERBOSE",
+        "text": "Backup job runs daily"
+      },
+      {
+        "chars": 27,
+        "fact_id": "F18",
+        "production": "P_RET_COMPACT",
+        "text": "Backup job retention=30 day"
+      },
+      {
+        "chars": 22,
+        "fact_id": "F19",
+        "production": "P_MODE_COMPACT",
+        "text": "System mode=production"
+      },
+      {
+        "chars": 21,
+        "fact_id": "F20",
+        "production": "P_FW_COMPACT",
+        "text": "Node C firmware=4.2.1"
+      }
+    ],
+    "ratio_to_789": 0.6096324461343473
+  },
+  "review_probes": [
+    {
+      "expected": "UNRESOLVED",
+      "got": "UNRESOLVED",
+      "id": "unicode_fullwidth",
+      "pass": true
+    },
+    {
+      "expected": "UNRESOLVED",
+      "got": "UNRESOLVED",
+      "id": "unicode_arabic_indic",
+      "pass": true
+    },
+    {
+      "expected": "UNRESOLVED",
+      "got": "UNRESOLVED",
+      "id": "leading_zero",
+      "pass": true
+    },
+    {
+      "expected": "UNRESOLVED",
+      "got": "UNRESOLVED",
+      "id": "invalid_date",
+      "pass": true
+    },
+    {
+      "expected": "PARSED",
+      "got": "PARSED",
+      "id": "tilde_approx",
+      "pass": true
+    },
+    {
+      "expected": "PARSED",
+      "got": "PARSED",
+      "id": "approx_dot",
+      "pass": true
+    },
+    {
+      "expected": "UNRESOLVED",
+      "got": "UNRESOLVED",
+      "id": "double_space",
+      "pass": true
+    }
+  ]
+}

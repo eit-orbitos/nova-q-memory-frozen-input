@@ -1,0 +1,266 @@
+{
+  "Q": [
+    {
+      "fact_id": "F01",
+      "relation": "memory_capacity",
+      "subject": "node_a"
+    },
+    {
+      "fact_id": "F02",
+      "relation": "memory_capacity",
+      "subject": "node_b"
+    },
+    {
+      "fact_id": "F03",
+      "relation": "memory_capacity",
+      "subject": "node_c"
+    },
+    {
+      "fact_id": "F04",
+      "relation": "memory_capacity",
+      "subject": "node_d"
+    },
+    {
+      "fact_id": "F05",
+      "relation": "state",
+      "subject": "node_a"
+    },
+    {
+      "fact_id": "F06",
+      "relation": "state",
+      "subject": "node_d"
+    },
+    {
+      "fact_id": "F07",
+      "relation": "node_count",
+      "subject": "cluster_1"
+    },
+    {
+      "fact_id": "F08",
+      "relation": "max_latency",
+      "subject": "cluster_1"
+    },
+    {
+      "fact_id": "F09",
+      "relation": "region",
+      "subject": "cluster_1"
+    },
+    {
+      "fact_id": "F10",
+      "relation": "bandwidth",
+      "subject": "link_ab"
+    },
+    {
+      "fact_id": "F11",
+      "relation": "duplex",
+      "subject": "link_ab"
+    },
+    {
+      "fact_id": "F12",
+      "relation": "temperature",
+      "subject": "sensor_x1"
+    },
+    {
+      "fact_id": "F13",
+      "relation": "calibration_date",
+      "subject": "sensor_x1"
+    },
+    {
+      "fact_id": "F14",
+      "relation": "depth",
+      "subject": "queue_q"
+    },
+    {
+      "fact_id": "F15",
+      "relation": "policy",
+      "subject": "queue_q"
+    },
+    {
+      "fact_id": "F16",
+      "relation": "capacity",
+      "subject": "storage_s1"
+    },
+    {
+      "fact_id": "F17",
+      "relation": "schedule",
+      "subject": "backup_job"
+    },
+    {
+      "fact_id": "F18",
+      "relation": "retention",
+      "subject": "backup_job"
+    },
+    {
+      "fact_id": "F19",
+      "relation": "mode",
+      "subject": "system"
+    },
+    {
+      "fact_id": "F20",
+      "relation": "firmware_version",
+      "subject": "node_c"
+    }
+  ],
+  "V": [
+    {
+      "fact_id": "F01",
+      "qualifier": "EXACT",
+      "relation": "memory_capacity",
+      "subject": "node_a",
+      "unit": "Mi",
+      "value": 64
+    },
+    {
+      "fact_id": "F02",
+      "qualifier": "EXACT",
+      "relation": "memory_capacity",
+      "subject": "node_b",
+      "unit": "Mi",
+      "value": 32
+    },
+    {
+      "fact_id": "F03",
+      "qualifier": "EXACT",
+      "relation": "memory_capacity",
+      "subject": "node_c",
+      "unit": "Mi",
+      "value": 16
+    },
+    {
+      "fact_id": "F04",
+      "qualifier": "EXACT",
+      "relation": "memory_capacity",
+      "subject": "node_d",
+      "unit": "Mi",
+      "value": 128
+    },
+    {
+      "fact_id": "F05",
+      "qualifier": "EXACT",
+      "relation": "state",
+      "subject": "node_a",
+      "unit": "state",
+      "value": "ACTIVE"
+    },
+    {
+      "fact_id": "F06",
+      "qualifier": "EXACT",
+      "relation": "state",
+      "subject": "node_d",
+      "unit": "state",
+      "value": "DISABLED"
+    },
+    {
+      "fact_id": "F07",
+      "qualifier": "EXACT",
+      "relation": "node_count",
+      "subject": "cluster_1",
+      "unit": "",
+      "value": 12
+    },
+    {
+      "fact_id": "F08",
+      "qualifier": "APPROX",
+      "relation": "max_latency",
+      "subject": "cluster_1",
+      "unit": "ms",
+      "value": 250
+    },
+    {
+      "fact_id": "F09",
+      "qualifier": "EXACT",
+      "relation": "region",
+      "subject": "cluster_1",
+      "unit": "",
+      "value": "eu-central"
+    },
+    {
+      "fact_id": "F10",
+      "qualifier": "EXACT",
+      "relation": "bandwidth",
+      "subject": "link_ab",
+      "unit": "Mbps",
+      "value": 1000
+    },
+    {
+      "fact_id": "F11",
+      "qualifier": "EXACT",
+      "relation": "duplex",
+      "subject": "link_ab",
+      "unit": "state",
+      "value": "FULL"
+    },
+    {
+      "fact_id": "F12",
+      "qualifier": "APPROX",
+      "relation": "temperature",
+      "subject": "sensor_x1",
+      "unit": "degC",
+      "value": 21.5
+    },
+    {
+      "fact_id": "F13",
+      "qualifier": "EXACT",
+      "relation": "calibration_date",
+      "subject": "sensor_x1",
+      "unit": "",
+      "value": "2026-04-18"
+    },
+    {
+      "fact_id": "F14",
+      "qualifier": "EXACT",
+      "relation": "depth",
+      "subject": "queue_q",
+      "unit": "entries",
+      "value": 4096
+    },
+    {
+      "fact_id": "F15",
+      "qualifier": "EXACT",
+      "relation": "policy",
+      "subject": "queue_q",
+      "unit": "state",
+      "value": "FIFO"
+    },
+    {
+      "fact_id": "F16",
+      "qualifier": "EXACT",
+      "relation": "capacity",
+      "subject": "storage_s1",
+      "unit": "Gi",
+      "value": 2048
+    },
+    {
+      "fact_id": "F17",
+      "qualifier": "EXACT",
+      "relation": "schedule",
+      "subject": "backup_job",
+      "unit": "",
+      "value": "daily"
+    },
+    {
+      "fact_id": "F18",
+      "qualifier": "EXACT",
+      "relation": "retention",
+      "subject": "backup_job",
+      "unit": "days",
+      "value": 30
+    },
+    {
+      "fact_id": "F19",
+      "qualifier": "EXACT",
+      "relation": "mode",
+      "subject": "system",
+      "unit": "state",
+      "value": "PRODUCTION"
+    },
+    {
+      "fact_id": "F20",
+      "qualifier": "EXACT",
+      "relation": "firmware_version",
+      "subject": "node_c",
+      "unit": "",
+      "value": "4.2.1"
+    }
+  ]
+}
