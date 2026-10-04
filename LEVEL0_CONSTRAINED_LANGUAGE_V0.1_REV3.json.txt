@@ -1,0 +1,926 @@
+{
+  "artifact": "LEVEL0_CONSTRAINED_LANGUAGE_V0.1",
+  "author_founder_architect": "Toni Mladenovski",
+  "claim_boundary": "Level 0/1 restricted-language pipeline only; passing does not imply later-level memory claims.",
+  "clause_boundary_spec": {
+    "boundary_chars": [
+      ";",
+      "\n",
+      "."
+    ],
+    "comma_is_boundary": false,
+    "dot_protecting_token_classes": [
+      "ABBREVIATION",
+      "DECIMAL",
+      "VERSION_DOT_PROTECTOR"
+    ],
+    "dot_rule": "Dot is boundary iff not inside a token span from dot_protecting_token_classes.",
+    "eof_terminates_final_clause": true,
+    "tests": [
+      {
+        "expected_clause_count": 2,
+        "id": "B1_TWO_SENTENCES_ONE_LINE",
+        "text": "Alpha ready. Beta ready."
+      },
+      {
+        "expected_clause_count": 3,
+        "id": "B2_SEMICOLON_AND_NEWLINE",
+        "text": "Alpha ready;Beta ready\nGamma ready"
+      },
+      {
+        "expected_clause_count": 2,
+        "id": "B3_APPROX_ABBREVIATION",
+        "text": "Alpha approx. 12 units. Beta ready."
+      },
+      {
+        "expected_clause_count": 3,
+        "id": "B4_DECIMAL_AND_VERSION",
+        "text": "Alpha 21.5 units. Beta 4.2.1. Gamma ready."
+      },
+      {
+        "expected_clause_count": 1,
+        "id": "B5_FINAL_PERIOD",
+        "text": "Alpha ready."
+      }
+    ]
+  },
+  "closed_vocabulary": {
+    "approximation_markers": [
+      "approximately equal to",
+      "approximately",
+      "roughly",
+      "around",
+      "about",
+      "approx.",
+      "~"
+    ],
+    "exact_emphasis": [
+      "exactly"
+    ],
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "schedules": {
+      "daily": [
+        "daily",
+        "every day"
+      ]
+    },
+    "states": {
+      "ACTIVE": [
+        "active",
+        "currently active"
+      ],
+      "DISABLED": [
+        "disabled"
+      ],
+      "FIFO": [
+        "FIFO",
+        "fifo",
+        "first-in, first-out",
+        "first-in first-out"
+      ],
+      "FULL": [
+        "full duplex",
+        "full-duplex"
+      ],
+      "PRODUCTION": [
+        "production"
+      ]
+    },
+    "subjects": {
+      "backup_job": [
+        "The backup job",
+        "Backup job",
+        "backup_job"
+      ],
+      "cluster_1": [
+        "Cluster 1",
+        "cluster 1",
+        "cluster_1"
+      ],
+      "link_ab": [
+        "Link AB",
+        "link_ab"
+      ],
+      "node_a": [
+        "Node A",
+        "node_a"
+      ],
+      "node_b": [
+        "Node B",
+        "node_b"
+      ],
+      "node_c": [
+        "Node C",
+        "node_c"
+      ],
+      "node_d": [
+        "Node D",
+        "node_d"
+      ],
+      "queue_q": [
+        "Queue Q",
+        "queue_q"
+      ],
+      "sensor_x1": [
+        "Sensor X1",
+        "sensor_x1"
+      ],
+      "storage_s1": [
+        "Storage unit S1",
+        "Storage S1",
+        "storage_s1"
+      ],
+      "system": [
+        "The system",
+        "System",
+        "system"
+      ]
+    },
+    "units": {
+      "GB": [
+        "GB",
+        "gigabytes"
+      ],
+      "Gi": [
+        "Gi",
+        "GiB",
+        "gibibytes"
+      ],
+      "MB": [
+        "MB",
+        "megabytes"
+      ],
+      "Mbps": [
+        "Mbps",
+        "mbps"
+      ],
+      "Mi": [
+        "Mi",
+        "MiB",
+        "mebibytes"
+      ],
+      "days": [
+        "day",
+        "days"
+      ],
+      "degC": [
+        "degC",
+        "°C",
+        "degrees Celsius"
+      ],
+      "entries": [
+        "entry",
+        "entries"
+      ],
+      "ms": [
+        "ms",
+        "milliseconds"
+      ]
+    }
+  },
+  "duplicate_policy": "UNRESOLVED",
+  "full_consumption_rule": "Productions are matched by fullmatch only.",
+  "full_text_rule": "Every non-empty clause must parse exactly once; otherwise whole text is UNRESOLVED.",
+  "invented_fact_trial_mapping": "FACT_INVENTED -> INVALID_TRANSFORMATION",
+  "minimum_rendering": {
+    "algorithm": "Enumerate every production for each frozen fact, every declared alias compatible with that fact, and every allowed qualifier rendering. Keep candidates that parse back to the exact fact. Select shortest clause per fact; join with separator.",
+    "final_terminator": "",
+    "origin": "script_generated_from_V",
+    "reported_value_source": "computed by proof script, never hard-coded",
+    "separator": ";"
+  },
+  "normative_source_rule": "This JSON is the complete normative language definition; code may interpret but may not add language rules.",
+  "number_words": {
+    "eight": 8,
+    "eighteen": 18,
+    "eighty": 80,
+    "eighty-eight": 88,
+    "eighty-five": 85,
+    "eighty-four": 84,
+    "eighty-nine": 89,
+    "eighty-one": 81,
+    "eighty-seven": 87,
+    "eighty-six": 86,
+    "eighty-three": 83,
+    "eighty-two": 82,
+    "eleven": 11,
+    "fifteen": 15,
+    "fifty": 50,
+    "fifty-eight": 58,
+    "fifty-five": 55,
+    "fifty-four": 54,
+    "fifty-nine": 59,
+    "fifty-one": 51,
+    "fifty-seven": 57,
+    "fifty-six": 56,
+    "fifty-three": 53,
+    "fifty-two": 52,
+    "five": 5,
+    "forty": 40,
+    "forty-eight": 48,
+    "forty-five": 45,
+    "forty-four": 44,
+    "forty-nine": 49,
+    "forty-one": 41,
+    "forty-seven": 47,
+    "forty-six": 46,
+    "forty-three": 43,
+    "forty-two": 42,
+    "four": 4,
+    "fourteen": 14,
+    "nine": 9,
+    "nineteen": 19,
+    "ninety": 90,
+    "ninety-eight": 98,
+    "ninety-five": 95,
+    "ninety-four": 94,
+    "ninety-nine": 99,
+    "ninety-one": 91,
+    "ninety-seven": 97,
+    "ninety-six": 96,
+    "ninety-three": 93,
+    "ninety-two": 92,
+    "one": 1,
+    "one hundred": 100,
+    "seven": 7,
+    "seventeen": 17,
+    "seventy": 70,
+    "seventy-eight": 78,
+    "seventy-five": 75,
+    "seventy-four": 74,
+    "seventy-nine": 79,
+    "seventy-one": 71,
+    "seventy-seven": 77,
+    "seventy-six": 76,
+    "seventy-three": 73,
+    "seventy-two": 72,
+    "six": 6,
+    "sixteen": 16,
+    "sixty": 60,
+    "sixty-eight": 68,
+    "sixty-five": 65,
+    "sixty-four": 64,
+    "sixty-nine": 69,
+    "sixty-one": 61,
+    "sixty-seven": 67,
+    "sixty-six": 66,
+    "sixty-three": 63,
+    "sixty-two": 62,
+    "ten": 10,
+    "thirteen": 13,
+    "thirty": 30,
+    "thirty-eight": 38,
+    "thirty-five": 35,
+    "thirty-four": 34,
+    "thirty-nine": 39,
+    "thirty-one": 31,
+    "thirty-seven": 37,
+    "thirty-six": 36,
+    "thirty-three": 33,
+    "thirty-two": 32,
+    "three": 3,
+    "twelve": 12,
+    "twenty": 20,
+    "twenty-eight": 28,
+    "twenty-five": 25,
+    "twenty-four": 24,
+    "twenty-nine": 29,
+    "twenty-one": 21,
+    "twenty-seven": 27,
+    "twenty-six": 26,
+    "twenty-three": 23,
+    "twenty-two": 22,
+    "two": 2,
+    "zero": 0
+  },
+  "operator_policy": {
+    "accepted": [
+      "EQUAL"
+    ],
+    "unsupported_operator_result": "UNRESOLVED"
+  },
+  "placeholder_regexes": {
+    "DATA_UNIT": "(?:gibibytes|gigabytes|mebibytes|megabytes|GiB|MiB|GB|Gi|MB|Mi)",
+    "DATE": "(?:[0-9]{4}-[0-9]{2}-[0-9]{2}|[0-9]{1,2} (?:September|December|February|November|January|October|August|April|March|July|June|May) [0-9]{4})",
+    "DAY_UNIT": "(?:days|day)",
+    "DUPLEX_STATE": "(?:full\\ duplex|full\\-duplex)",
+    "ENTRY_UNIT": "(?:entries|entry)",
+    "MODE": "(?:production)",
+    "NUMBER": "(?:(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)(?:\\.[0-9]+)?|(?:seventy\\-eight|seventy\\-seven|seventy\\-three|eighty\\-eight|eighty\\-seven|eighty\\-three|ninety\\-eight|ninety\\-seven|ninety\\-three|seventy\\-five|seventy\\-four|seventy\\-nine|thirty\\-eight|thirty\\-seven|thirty\\-three|twenty\\-eight|twenty\\-seven|twenty\\-three|eighty\\-five|eighty\\-four|eighty\\-nine|fifty\\-eight|fifty\\-seven|fifty\\-three|forty\\-eight|forty\\-seven|forty\\-three|ninety\\-five|ninety\\-four|ninety\\-nine|one\\ hundred|seventy\\-one|seventy\\-six|seventy\\-two|sixty\\-eight|sixty\\-seven|sixty\\-three|thirty\\-five|thirty\\-four|thirty\\-nine|twenty\\-five|twenty\\-four|twenty\\-nine|eighty\\-one|eighty\\-six|eighty\\-two|fifty\\-five|fifty\\-four|fifty\\-nine|forty\\-five|forty\\-four|forty\\-nine|ninety\\-one|ninety\\-six|ninety\\-two|sixty\\-five|sixty\\-four|sixty\\-nine|thirty\\-one|thirty\\-six|thirty\\-two|twenty\\-one|twenty\\-six|twenty\\-two|fifty\\-one|fifty\\-six|fifty\\-two|forty\\-one|forty\\-six|forty\\-two|seventeen|sixty\\-one|sixty\\-six|sixty\\-two|eighteen|fourteen|nineteen|thirteen|fifteen|seventy|sixteen|eighty|eleven|ninety|thirty|twelve|twenty|eight|fifty|forty|seven|sixty|three|five|four|nine|zero|one|six|ten|two))",
+    "NUM_MODIFIER": "(?:(?P<exact_word>exactly) |(?P<qualifier_word>(?:approximately\\ equal\\ to|approximately|approx\\.|roughly|around|about)) |(?P<qualifier_tilde>~))?",
+    "POLICY": "(?:first\\-in,\\ first\\-out|first\\-in\\ first\\-out|FIFO|fifo)",
+    "RATE_UNIT": "(?:Mbps|mbps)",
+    "REGION": "[a-z]{2,}(?:-[a-z0-9]+)+",
+    "SCHEDULE": "(?:every\\ day|daily)",
+    "STATE": "(?:currently\\ active|disabled|active)",
+    "SUBJECT": "(?:Storage\\ unit\\ S1|The\\ backup\\ job|Backup\\ job|Storage\\ S1|The\\ system|backup_job|storage_s1|Cluster\\ 1|Sensor\\ X1|cluster\\ 1|cluster_1|sensor_x1|Link\\ AB|Queue\\ Q|link_ab|queue_q|Node\\ A|Node\\ B|Node\\ C|Node\\ D|System|node_a|node_b|node_c|node_d|system)",
+    "TEMP_UNIT": "(?:degrees\\ Celsius|degC|°C)",
+    "TIME_UNIT": "(?:milliseconds|ms)",
+    "VERSION": "(?:0|[1-9][0-9]*)(?:\\.(?:0|[1-9][0-9]*)){2,3}"
+  },
+  "placeholder_substitution": {
+    "algorithm": "Replace each placeholder only from placeholder_regexes before regex compilation; compile with declared regex_dialect flags.",
+    "syntax": "{{NAME}}"
+  },
+  "production_authority": "regex_template is NORMATIVE; pattern_human_readable is NON_NORMATIVE documentation.",
+  "productions": [
+    {
+      "id": "P_MEMORY_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} has [NUM_MODIFIER]{NUMBER} {DATA_UNIT} of memory",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) has {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{DATA_UNIT}}) of memory$",
+      "relation": "memory_capacity",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_MEMORY_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} memory=[NUM_MODIFIER]{NUMBER} {DATA_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) memory={{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{DATA_UNIT}})$",
+      "relation": "memory_capacity",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_STATE_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} is {STATE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) is (?P<value>{{STATE}})$",
+      "relation": "state",
+      "unit_default": "state",
+      "value_class": "STATE"
+    },
+    {
+      "id": "P_STATE_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} state={STATE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) state=(?P<value>{{STATE}})$",
+      "relation": "state",
+      "unit_default": "state",
+      "value_class": "STATE"
+    },
+    {
+      "id": "P_NODE_COUNT_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} contains [NUM_MODIFIER]{NUMBER} nodes",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) contains {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) nodes$",
+      "relation": "node_count",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_NODE_COUNT_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} nodes=[NUM_MODIFIER]{NUMBER}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) nodes={{NUM_MODIFIER}}(?P<value>{{NUMBER}})$",
+      "relation": "node_count",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_LATENCY_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "The maximum latency of {SUBJECT} is [NUM_MODIFIER]{NUMBER} {TIME_UNIT}",
+      "regex_template": "^The maximum latency of (?P<subject>{{SUBJECT}}) is {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{TIME_UNIT}})$",
+      "relation": "max_latency",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_LATENCY_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} max_latency=[NUM_MODIFIER]{NUMBER} {TIME_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) max_latency={{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{TIME_UNIT}})$",
+      "relation": "max_latency",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_REGION_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} is located in the {REGION} region",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) is located in the (?P<value>{{REGION}}) region$",
+      "relation": "region",
+      "unit_default": "",
+      "value_class": "REGION"
+    },
+    {
+      "id": "P_REGION_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} region={REGION}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) region=(?P<value>{{REGION}})$",
+      "relation": "region",
+      "unit_default": "",
+      "value_class": "REGION"
+    },
+    {
+      "id": "P_BANDWIDTH_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} provides [NUM_MODIFIER]{NUMBER} {RATE_UNIT} of bandwidth",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) provides {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{RATE_UNIT}}) of bandwidth$",
+      "relation": "bandwidth",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_BANDWIDTH_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} bandwidth=[NUM_MODIFIER]{NUMBER} {RATE_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) bandwidth={{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{RATE_UNIT}})$",
+      "relation": "bandwidth",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_DUPLEX_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} is {DUPLEX_STATE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) is (?P<value>{{DUPLEX_STATE}})$",
+      "relation": "duplex",
+      "unit_default": "state",
+      "value_class": "DUPLEX_STATE"
+    },
+    {
+      "id": "P_DUPLEX_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} duplex={DUPLEX_STATE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) duplex=(?P<value>{{DUPLEX_STATE}})$",
+      "relation": "duplex",
+      "unit_default": "state",
+      "value_class": "DUPLEX_STATE"
+    },
+    {
+      "id": "P_TEMP_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} reports a temperature of [NUM_MODIFIER]{NUMBER} {TEMP_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) reports a temperature of {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{TEMP_UNIT}})$",
+      "relation": "temperature",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_TEMP_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} temperature=[NUM_MODIFIER]{NUMBER} {TEMP_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) temperature={{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{TEMP_UNIT}})$",
+      "relation": "temperature",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_CAL_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} was last calibrated on {DATE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) was last calibrated on (?P<value>{{DATE}})$",
+      "relation": "calibration_date",
+      "unit_default": "",
+      "value_class": "DATE"
+    },
+    {
+      "id": "P_CAL_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} calibration_date={DATE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) calibration_date=(?P<value>{{DATE}})$",
+      "relation": "calibration_date",
+      "unit_default": "",
+      "value_class": "DATE"
+    },
+    {
+      "id": "P_DEPTH_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} currently contains [NUM_MODIFIER]{NUMBER} {ENTRY_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) currently contains {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{ENTRY_UNIT}})$",
+      "relation": "depth",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_DEPTH_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} depth=[NUM_MODIFIER]{NUMBER} {ENTRY_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) depth={{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{ENTRY_UNIT}})$",
+      "relation": "depth",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_POLICY_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} operates under a {POLICY} policy",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) operates under a (?P<value>{{POLICY}}) policy$",
+      "relation": "policy",
+      "unit_default": "state",
+      "value_class": "POLICY"
+    },
+    {
+      "id": "P_POLICY_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} policy={POLICY}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) policy=(?P<value>{{POLICY}})$",
+      "relation": "policy",
+      "unit_default": "state",
+      "value_class": "POLICY"
+    },
+    {
+      "id": "P_CAP_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} provides [NUM_MODIFIER]{NUMBER} {DATA_UNIT} of capacity",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) provides {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{DATA_UNIT}}) of capacity$",
+      "relation": "capacity",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_CAP_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} capacity=[NUM_MODIFIER]{NUMBER} {DATA_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) capacity={{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{DATA_UNIT}})$",
+      "relation": "capacity",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_SCHED_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} runs {SCHEDULE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) runs (?P<value>{{SCHEDULE}})$",
+      "relation": "schedule",
+      "unit_default": "",
+      "value_class": "SCHEDULE"
+    },
+    {
+      "id": "P_SCHED_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} schedule={SCHEDULE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) schedule=(?P<value>{{SCHEDULE}})$",
+      "relation": "schedule",
+      "unit_default": "",
+      "value_class": "SCHEDULE"
+    },
+    {
+      "id": "P_RET_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} retains its backups for [NUM_MODIFIER]{NUMBER} {DAY_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) retains its backups for {{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{DAY_UNIT}})$",
+      "relation": "retention",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_RET_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} retention=[NUM_MODIFIER]{NUMBER} {DAY_UNIT}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) retention={{NUM_MODIFIER}}(?P<value>{{NUMBER}}) (?P<unit>{{DAY_UNIT}})$",
+      "relation": "retention",
+      "unit_default": "",
+      "value_class": "NUMBER"
+    },
+    {
+      "id": "P_MODE_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} runs in {MODE} mode",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) runs in (?P<value>{{MODE}}) mode$",
+      "relation": "mode",
+      "unit_default": "state",
+      "value_class": "MODE"
+    },
+    {
+      "id": "P_MODE_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} mode={MODE}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) mode=(?P<value>{{MODE}})$",
+      "relation": "mode",
+      "unit_default": "state",
+      "value_class": "MODE"
+    },
+    {
+      "id": "P_FW_VERBOSE",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} runs firmware version {VERSION}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) runs firmware version (?P<value>{{VERSION}})$",
+      "relation": "firmware_version",
+      "unit_default": "",
+      "value_class": "VERSION"
+    },
+    {
+      "id": "P_FW_COMPACT",
+      "normative_field": "regex_template",
+      "operator": "EQUAL",
+      "pattern_human_readable": "{SUBJECT} firmware={VERSION}",
+      "regex_template": "^(?P<subject>{{SUBJECT}}) firmware=(?P<value>{{VERSION}})$",
+      "relation": "firmware_version",
+      "unit_default": "",
+      "value_class": "VERSION"
+    }
+  ],
+  "project": "NOVA Q / EIT / TIE",
+  "quantity_classes": {
+    "COUNT": [
+      "entries",
+      "unitless_count"
+    ],
+    "DATA_QUANTITY": [
+      "Mi",
+      "Gi",
+      "MB",
+      "GB"
+    ],
+    "DATA_RATE": [
+      "Mbps"
+    ],
+    "DATE": [
+      "unitless"
+    ],
+    "ENUM_STATE": [
+      "state"
+    ],
+    "REGION": [
+      "unitless"
+    ],
+    "SCHEDULE": [
+      "unitless"
+    ],
+    "TEMPERATURE": [
+      "degC"
+    ],
+    "TIME_DURATION": [
+      "ms",
+      "days"
+    ],
+    "VERSION": [
+      "unitless"
+    ]
+  },
+  "regex_dialect": {
+    "engine": "Python re",
+    "flags": [
+      "re.ASCII"
+    ],
+    "normative": true,
+    "rationale": "Ensure \\d/\\w/word-boundary behavior cannot broaden to Unicode."
+  },
+  "relation_quantity_classes": {
+    "bandwidth": "DATA_RATE",
+    "calibration_date": "DATE",
+    "capacity": "DATA_QUANTITY",
+    "depth": "COUNT",
+    "duplex": "ENUM_STATE",
+    "firmware_version": "VERSION",
+    "max_latency": "TIME_DURATION",
+    "memory_capacity": "DATA_QUANTITY",
+    "mode": "ENUM_STATE",
+    "node_count": "COUNT",
+    "policy": "ENUM_STATE",
+    "region": "REGION",
+    "retention": "TIME_DURATION",
+    "schedule": "SCHEDULE",
+    "state": "ENUM_STATE",
+    "temperature": "TEMPERATURE"
+  },
+  "revision": "REV3",
+  "semantic_validators": {
+    "CALENDAR_DATE": "must be a real Gregorian calendar date",
+    "IDENTITY_STRING": "identity",
+    "NUMBER_CANONICALIZER": [
+      "ASCII digits only",
+      "no leading zeros except 0",
+      "3-digit comma grouping only",
+      "trailing .0 canonicalizes integer",
+      "declared number_words only"
+    ]
+  },
+  "slot_to_fact_field_mapping": {
+    "operator": {
+      "constant": "EQUAL",
+      "target_field": "operator"
+    },
+    "qualifier": {
+      "rules": [
+        "If qualifier_word or qualifier_tilde matched -> APPROX",
+        "Otherwise -> EXACT",
+        "exact_word is emphasis only and does not change EXACT"
+      ],
+      "source_groups": [
+        "qualifier_word",
+        "qualifier_tilde",
+        "exact_word"
+      ],
+      "target_field": "qualifier"
+    },
+    "relation": {
+      "source": "production.relation",
+      "target_field": "relation"
+    },
+    "subject": {
+      "source_group": "subject",
+      "target_field": "subject",
+      "transform": "SUBJECT_SEMANTIC_MAP"
+    },
+    "unit": {
+      "source_group": "unit",
+      "target_field": "unit",
+      "transform": "UNIT_SEMANTIC_MAP_OR_DEFAULT"
+    },
+    "value": {
+      "source_group": "value",
+      "target_field": "value",
+      "transform": "VALUE_CLASS_SEMANTICS"
+    }
+  },
+  "spacing_rule": "All literal spaces in productions are exactly one ASCII space U+0020 unless a token regex explicitly says otherwise.",
+  "status": "PRE_FREEZE_CANDIDATE",
+  "token_classes": {
+    "ABBREVIATION": {
+      "dot_protecting": true,
+      "regex": "(?:approx\\.)"
+    },
+    "DATA_UNIT": {
+      "regex": "(?:gibibytes|gigabytes|mebibytes|megabytes|GiB|MiB|GB|Gi|MB|Mi)",
+      "semantic_map": {
+        "GB": "GB",
+        "Gi": "Gi",
+        "GiB": "Gi",
+        "MB": "MB",
+        "Mi": "Mi",
+        "MiB": "Mi",
+        "gibibytes": "Gi",
+        "gigabytes": "GB",
+        "mebibytes": "Mi",
+        "megabytes": "MB"
+      }
+    },
+    "DATE": {
+      "regex": "(?:[0-9]{4}-[0-9]{2}-[0-9]{2}|[0-9]{1,2} (?:September|December|February|November|January|October|August|April|March|July|June|May) [0-9]{4})",
+      "semantic_validator": "CALENDAR_DATE"
+    },
+    "DAY_UNIT": {
+      "regex": "(?:days|day)",
+      "semantic_map": {
+        "day": "days",
+        "days": "days"
+      }
+    },
+    "DECIMAL": {
+      "dot_protecting": true,
+      "regex": "(?:0|[1-9][0-9]*)\\.[0-9]+"
+    },
+    "DUPLEX_STATE": {
+      "regex": "(?:full\\ duplex|full\\-duplex)",
+      "semantic_map": {
+        "full duplex": "FULL",
+        "full-duplex": "FULL"
+      }
+    },
+    "ENTRY_UNIT": {
+      "regex": "(?:entries|entry)",
+      "semantic_map": {
+        "entries": "entries",
+        "entry": "entries"
+      }
+    },
+    "MODE": {
+      "regex": "(?:production)",
+      "semantic_map": {
+        "production": "PRODUCTION"
+      }
+    },
+    "NUMBER": {
+      "regex": "(?:(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)(?:\\.[0-9]+)?|(?:seventy\\-eight|seventy\\-seven|seventy\\-three|eighty\\-eight|eighty\\-seven|eighty\\-three|ninety\\-eight|ninety\\-seven|ninety\\-three|seventy\\-five|seventy\\-four|seventy\\-nine|thirty\\-eight|thirty\\-seven|thirty\\-three|twenty\\-eight|twenty\\-seven|twenty\\-three|eighty\\-five|eighty\\-four|eighty\\-nine|fifty\\-eight|fifty\\-seven|fifty\\-three|forty\\-eight|forty\\-seven|forty\\-three|ninety\\-five|ninety\\-four|ninety\\-nine|one\\ hundred|seventy\\-one|seventy\\-six|seventy\\-two|sixty\\-eight|sixty\\-seven|sixty\\-three|thirty\\-five|thirty\\-four|thirty\\-nine|twenty\\-five|twenty\\-four|twenty\\-nine|eighty\\-one|eighty\\-six|eighty\\-two|fifty\\-five|fifty\\-four|fifty\\-nine|forty\\-five|forty\\-four|forty\\-nine|ninety\\-one|ninety\\-six|ninety\\-two|sixty\\-five|sixty\\-four|sixty\\-nine|thirty\\-one|thirty\\-six|thirty\\-two|twenty\\-one|twenty\\-six|twenty\\-two|fifty\\-one|fifty\\-six|fifty\\-two|forty\\-one|forty\\-six|forty\\-two|seventeen|sixty\\-one|sixty\\-six|sixty\\-two|eighteen|fourteen|nineteen|thirteen|fifteen|seventy|sixteen|eighty|eleven|ninety|thirty|twelve|twenty|eight|fifty|forty|seven|sixty|three|five|four|nine|zero|one|six|ten|two))",
+      "semantic_validator": "NUMBER_CANONICALIZER"
+    },
+    "POLICY": {
+      "regex": "(?:first\\-in,\\ first\\-out|first\\-in\\ first\\-out|FIFO|fifo)",
+      "semantic_map": {
+        "FIFO": "FIFO",
+        "fifo": "FIFO",
+        "first-in first-out": "FIFO",
+        "first-in, first-out": "FIFO"
+      }
+    },
+    "RATE_UNIT": {
+      "regex": "(?:Mbps|mbps)",
+      "semantic_map": {
+        "Mbps": "Mbps",
+        "mbps": "Mbps"
+      }
+    },
+    "REGION": {
+      "regex": "[a-z]{2,}(?:-[a-z0-9]+)+",
+      "semantic_validator": "IDENTITY_STRING"
+    },
+    "SCHEDULE": {
+      "regex": "(?:every\\ day|daily)",
+      "semantic_map": {
+        "daily": "daily",
+        "every day": "daily"
+      }
+    },
+    "STATE": {
+      "regex": "(?:currently\\ active|disabled|active)",
+      "semantic_map": {
+        "active": "ACTIVE",
+        "currently active": "ACTIVE",
+        "disabled": "DISABLED"
+      }
+    },
+    "SUBJECT": {
+      "regex": "(?:Storage\\ unit\\ S1|The\\ backup\\ job|Backup\\ job|Storage\\ S1|The\\ system|backup_job|storage_s1|Cluster\\ 1|Sensor\\ X1|cluster\\ 1|cluster_1|sensor_x1|Link\\ AB|Queue\\ Q|link_ab|queue_q|Node\\ A|Node\\ B|Node\\ C|Node\\ D|System|node_a|node_b|node_c|node_d|system)",
+      "semantic_map": {
+        "Backup job": "backup_job",
+        "Cluster 1": "cluster_1",
+        "Link AB": "link_ab",
+        "Node A": "node_a",
+        "Node B": "node_b",
+        "Node C": "node_c",
+        "Node D": "node_d",
+        "Queue Q": "queue_q",
+        "Sensor X1": "sensor_x1",
+        "Storage S1": "storage_s1",
+        "Storage unit S1": "storage_s1",
+        "System": "system",
+        "The backup job": "backup_job",
+        "The system": "system",
+        "backup_job": "backup_job",
+        "cluster 1": "cluster_1",
+        "cluster_1": "cluster_1",
+        "link_ab": "link_ab",
+        "node_a": "node_a",
+        "node_b": "node_b",
+        "node_c": "node_c",
+        "node_d": "node_d",
+        "queue_q": "queue_q",
+        "sensor_x1": "sensor_x1",
+        "storage_s1": "storage_s1",
+        "system": "system"
+      }
+    },
+    "TEMP_UNIT": {
+      "regex": "(?:degrees\\ Celsius|degC|°C)",
+      "semantic_map": {
+        "degC": "degC",
+        "degrees Celsius": "degC",
+        "°C": "degC"
+      }
+    },
+    "TIME_UNIT": {
+      "regex": "(?:milliseconds|ms)",
+      "semantic_map": {
+        "milliseconds": "ms",
+        "ms": "ms"
+      }
+    },
+    "VERSION": {
+      "regex": "(?:0|[1-9][0-9]*)(?:\\.(?:0|[1-9][0-9]*)){2,3}",
+      "semantic_validator": "IDENTITY_STRING"
+    },
+    "VERSION_DOT_PROTECTOR": {
+      "dot_protecting": true,
+      "regex": "(?:0|[1-9][0-9]*)(?:\\.(?:0|[1-9][0-9]*)){2,3}"
+    }
+  }
+}
