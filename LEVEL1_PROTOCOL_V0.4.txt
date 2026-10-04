@@ -1,0 +1,1399 @@
+===============================================================================
+NOVA Q / EIT
+LEVEL1_PROTOCOL_V0.4
+DETERMINISTIC END-TO-END RESTRICTED-LANGUAGE COMPRESSION VALIDATION
+===============================================================================
+
+AUTHOR / FOUNDER / ARCHITECT:
+Toni Mladenovski
+
+PROJECT:
+NOVA Q / EIT / TIE
+
+PROJECT_ORIGIN_DATE:
+18 April 2026
+
+PROTOCOL_VERSION:
+LEVEL1_PROTOCOL_V0.4
+
+PROTOCOL_STATUS:
+PRE_FREEZE_DRAFT
+PROTOCOL_ONLY
+NO_COMPRESSOR_CODE_INCLUDED
+
+DATE:
+2026-10-04
+
+===============================================================================
+1. PURPOSE
+===============================================================================
+
+Level 1 tests a deterministic compressor across five distinct valid inputs
+under the frozen restricted-language software pipeline.
+
+The pipeline is:
+
+INPUT_i
+→ DETERMINISTIC COMPRESSOR
+→ CANDIDATE_i
+→ FROZEN LEVEL 0 EXTRACTOR V0.4
+→ FROZEN LEVEL 0 COMPARATOR V0.4
+→ VERDICT_i
+
+Level 1 asks whether the frozen compressor:
+
+1. reads each input rather than returning a fixture-specific constant;
+2. produces a shorter representation;
+3. preserves the facts of that specific input;
+4. remains deterministic across repeated execution;
+5. fails closed on an invalid input.
+
+Level 1 is:
+
+RESTRICTED_LANGUAGE_PIPELINE_VALIDATION
+
+Level 1 is NOT:
+
+MEMORY_MODEL_PROOF
+GENERAL_MEMORY_VALIDATION
+GENERAL_NATURAL_LANGUAGE_COMPRESSION
+GENERAL_SEMANTIC_PRESERVATION_PROOF
+PHYSICAL_VALIDATION
+AGI_VALIDATION
+ASI_VALIDATION
+GENERAL_THEOREM
+
+===============================================================================
+2. FROZEN DEPENDENCIES
+===============================================================================
+
+2.1 ORIGINAL INPUT PACKAGE
+
+Original frozen M_0 SHA-256:
+
+c0f1ffc9bc2679380ee8da77a8e98a0fb2987b606f8b0aaa69a40d4be758d439
+
+Original M_0 external provenance commit:
+
+8b30182f473dda613d041989c833f7795f03e1fa
+
+Original M_0 semantic character length for Level 1 counting:
+
+789
+
+The stored file may contain one final LF. Under the Level 1 counting rule,
+that storage-only final LF is excluded from the candidate/input semantic length.
+
+2.2 FROZEN GRAMMAR
+
+ARTIFACT:
+
+LEVEL0_CONSTRAINED_LANGUAGE_V0.1_REV3
+
+SHA-256:
+
+d7a68615f38beac2808936bea9591c2a68fc22e0ae10024159d2a49682252852
+
+PUBLIC COMMIT:
+
+56be3b116000c1add857e436ef09171d13511286
+
+STATUS:
+
+FROZEN
+IMMUTABLE DURING LEVEL 1
+
+2.3 FROZEN EVALUATOR
+
+ARTIFACT:
+
+LEVEL0_EVALUATOR_V0.4
+
+PUBLIC COMMIT:
+
+eaa3593d414556d4197a840723d9296e9969c27b
+
+EXTERNAL TIMESTAMP:
+
+2026-10-04T12:43:49-04:00
+
+STATUS:
+
+FROZEN_LEVEL0_EVALUATOR
+IMMUTABLE DURING LEVEL 1
+
+2.4 LEVEL 0 STATUS
+
+LEVEL_0 = CLOSED
+
+Level 1 shall not modify:
+
+REV3 grammar
+V0.4 extractor
+V0.4 comparator
+Level 0 scoring rules
+
+===============================================================================
+3. COMPRESSOR TYPE DECISION
+===============================================================================
+
+LEVEL1_COMPRESSOR_TYPE:
+
+DETERMINISTIC_PROGRAM
+
+LANGUAGE_MODEL_AS_LEVEL1_COMPRESSOR:
+
+NOT_USED
+
+Rationale:
+
+REPRODUCIBILITY
+AUDITABILITY
+STATIC_LEAKAGE_REVIEW
+CONTROL_INPUT_TESTABILITY
+NO_SESSION_MEMORY_CONTAMINATION
+
+The compressor shall be implemented as a deterministic Python program.
+
+The same frozen program bytes shall be used for all Level 1 runs.
+
+===============================================================================
+4. COMPRESSOR INPUT FIREWALL
+===============================================================================
+
+For each valid Level 1 run, the compressor may read only:
+
+1. the current input text;
+2. the frozen REV3 grammar JSON.
+
+The compressor MUST NOT read:
+
+V
+Q
+the frozen comparator
+comparator output from any previous run
+fact IDs
+expected fact tables
+hidden control answers
+precomputed candidate outputs
+the public 481-character solution
+MINIMUM_COMPACT_REV3.txt
+COMPACT_VALID_REV3.txt
+held-out scoring files
+control-package contents before reveal
+network resources
+
+Formal rule:
+
+COMPRESSOR_ALLOWED_INPUTS
+=
+CURRENT_INPUT_TEXT
++
+FROZEN_REV3_GRAMMAR
+
+COMPRESSOR_PROHIBITED_INPUTS
+=
+V
++
+Q
++
+COMPARATOR
++
+EXPECTED_OUTPUT
++
+HIDDEN_CONTROL_DATA
+
+===============================================================================
+5. GRAMMAR DEPENDENCY RULE
+===============================================================================
+
+The compressor MAY read and interpret the frozen REV3 grammar JSON.
+
+The compressor MAY implement its own parser from the frozen grammar.
+
+The compressor MAY import:
+
+level0_extract_v0_4.py
+
+only if that dependency is declared before compressor freeze.
+
+The compressor MUST NOT import:
+
+level0_compare_v0_4.py
+
+The compressor MUST NOT read V or Q directly or indirectly.
+
+If the compressor imports `level0_extract_v0_4.py`, the Level 1 record MUST
+state:
+
+SHARED_PARSER_LIMITATION = ACTIVE
+
+Meaning:
+
+The compressor and evaluator share the same parser implementation.
+
+Therefore a Level 1 pass in that configuration demonstrates pipeline
+consistency under a shared parser and does NOT constitute an independent
+cross-check of parsing correctness.
+
+===============================================================================
+6. FIXTURE-LEAKAGE PROHIBITION
+===============================================================================
+
+The compressor source MUST NOT contain fixture-specific shortcuts.
+
+Prohibited examples include:
+
+hardcoded original V values
+hardcoded Q
+hardcoded F01-F20 fact table
+hardcoded 481-character known solution
+precomputed output for original M_0
+precomputed outputs for held-out controls
+special case on M_0 SHA-256
+special case on control SHA-256
+input fingerprint lookup table
+branching on known fixture text
+hardcoded relation/value pairs whose purpose is to reproduce the frozen fixture
+
+A static leakage audit is required before compressor freeze.
+
+If fixture leakage is found:
+
+COMPRESSOR_FREEZE = BLOCKED
+
+===============================================================================
+7. CONTROL-INPUT ENVELOPE
+===============================================================================
+
+Before hidden controls are written, their allowed domain is frozen as follows.
+
+A valid Level 1 control input may be any text that:
+
+1. is accepted by frozen REV3;
+2. yields extractor status PARSED;
+3. contains one or more facts;
+4. may use any clause order accepted by REV3;
+5. may use any aliases accepted by REV3;
+6. may use any values accepted by the relevant frozen production;
+7. may use any units accepted by the relevant frozen production;
+8. may use EXACT or APPROX qualifiers where the grammar permits them;
+9. may contain a fact count different from 20;
+10. need not preserve the subject/relation/value combination of original M_0.
+
+The control author may vary:
+
+subject
+relation
+value
+unit
+qualifier
+alias choice
+clause order
+fact count
+
+provided the resulting text is valid under frozen REV3.
+
+Control inputs shall not rely on syntax outside REV3.
+
+===============================================================================
+8. FIVE DISTINCT VALID INPUTS
+===============================================================================
+
+The Level 1 primary experiment contains exactly five distinct valid inputs.
+
+Run IDs:
+
+L1_R01 = ORIGINAL_M0
+L1_R02 = HELD_OUT_CONTROL_1
+L1_R03 = HELD_OUT_CONTROL_2
+L1_R04 = HELD_OUT_CONTROL_3
+L1_R05 = HELD_OUT_CONTROL_4
+
+These are five different inputs.
+
+They are NOT five repeated generations of one input.
+
+If two valid inputs are byte-identical after normalization:
+
+PROTOCOL_ERROR
+
+===============================================================================
+9. CONTROL AUTHORING TIMING
+===============================================================================
+
+The compressor must be frozen BEFORE held-out controls are authored.
+
+Required order:
+
+FREEZE_PROTOCOL
+→ BUILD_COMPRESSOR
+→ LEAKAGE_REVIEW
+→ FREEZE_COMPRESSOR
+→ AUTHOR_CONTROLS
+→ COMMIT_CONTROL_PACKAGE_HASH
+→ RUN_EXPERIMENT
+→ REVEAL_CONTROLS
+→ SCORE_AND_PUBLISH
+
+The control author shall not provide control contents to the compressor author
+before execution.
+
+===============================================================================
+10. CONTROL COMMIT-REVEAL
+===============================================================================
+
+After compressor freeze and before any control run:
+
+1. Claude creates the hidden control package.
+2. Claude computes SHA-256 over the exact control package bytes.
+3. Only the package SHA-256 is disclosed before execution.
+4. Toni Mladenovski publishes that commitment hash in the project repository.
+5. The control contents remain hidden until all Level 1 runs complete.
+6. After execution, the exact control package is revealed.
+7. The revealed package SHA-256 must equal the previously committed hash.
+
+If the revealed control package hash differs from the committed hash:
+
+CONTROL_COMMITMENT_INVALID
+LEVEL1_PRIMARY_PASS = PROHIBITED
+
+The commitment proves package immutability after commitment.
+
+It does not independently prove that the controls were authored without bias.
+
+===============================================================================
+11. CONTROL FEASIBILITY CERTIFICATE
+===============================================================================
+
+For each held-out control i ∈ {2,3,4,5}, the hidden control package must
+contain one feasibility witness text:
+
+W_i
+
+such that both conditions hold:
+
+A.
+
+frozen evaluator V0.4 scores W_i against V_i as:
+
+TWIN_VALID
+
+AND
+
+B.
+
+len(W_i) / len(INPUT_i) < 0.70
+
+using the exact character-counting rule defined in Section 16.
+
+The witness establishes only that the control is solvable under the frozen
+Level 1 threshold.
+
+The witness MUST NOT be provided to the compressor.
+
+The witness remains hidden until the control package is revealed after all
+Level 1 executions are complete.
+
+At reveal time, every witness must be independently checked against:
+
+the committed control input
+the committed V_i
+the frozen REV3 grammar
+the frozen evaluator V0.4
+the frozen character-counting rule
+
+If any control lacks a valid feasibility witness:
+
+PROTOCOL_ERROR
+
+This is NOT a compressor failure.
+
+The affected control may not be used to claim a Level 1 compressor failure.
+
+===============================================================================
+12. MATCHING REFERENCE FOR EACH INPUT
+===============================================================================
+
+Every valid input i has a matching reference V_i.
+
+For L1_R01:
+
+V_1 = original frozen V
+
+For L1_R02 through L1_R05:
+
+V_i = control-specific reference authored with the hidden control.
+
+For every held-out control:
+
+V_i MUST differ from the original frozen V in at least one semantic fact.
+
+If a control reference V_i is semantically identical to original V:
+
+PROTOCOL_ERROR
+
+The compressor never receives V_i.
+
+Only the frozen comparator receives V_i during scoring.
+
+===============================================================================
+13. POSITIVE CHECK
+===============================================================================
+
+For each valid input i:
+
+COMPRESSOR(INPUT_i)
+→ OUTPUT_i
+
+The frozen V0.4 evaluator scores OUTPUT_i against V_i.
+
+Required result:
+
+TRIAL_VERDICT = TWIN_VALID
+
+If the result is anything else:
+
+POSITIVE_CHECK_i = FAIL
+
+===============================================================================
+14. ANTI-CONSTANT CHECK
+===============================================================================
+
+For each held-out control input:
+
+i ∈ {2, 3, 4, 5}
+
+the corresponding V_i must first satisfy:
+
+V_i != ORIGINAL_V
+
+at the semantic fact-set level.
+
+Otherwise:
+
+PROTOCOL_ERROR
+
+The same OUTPUT_i is then also compared against the ORIGINAL frozen V.
+
+Required result:
+
+OUTPUT_i AGAINST ORIGINAL_V
+MUST NOT
+RETURN TWIN_VALID
+
+Therefore:
+
+ANTI_CONSTANT_CHECK_i = PASS
+
+iff:
+
+TRIAL_VERDICT != TWIN_VALID
+
+This prevents a compressor that ignores its input and always emits a valid
+rendering of original M_0 from passing Level 1.
+
+For L1_R01, no anti-constant check is required because V_1 is original V.
+
+===============================================================================
+15. LENGTH RULE — PER INPUT
+===============================================================================
+
+The length threshold is computed independently for each input.
+
+For valid input i:
+
+RATIO_i
+=
+OUTPUT_LENGTH_i / INPUT_LENGTH_i
+
+Required:
+
+RATIO_i < 0.70
+
+Therefore:
+
+LENGTH_PASS_i
+iff
+OUTPUT_LENGTH_i / INPUT_LENGTH_i < 0.70
+
+The original M_0 has:
+
+INPUT_LENGTH_1 = 789
+
+Therefore for L1_R01 only:
+
+MAXIMUM_PASSING_OUTPUT_LENGTH = 552 characters
+
+For control inputs:
+
+552 IS NOT A UNIVERSAL LIMIT.
+
+Each control uses its own input length.
+
+===============================================================================
+16. CHARACTER-COUNTING RULE
+===============================================================================
+
+For both input and output:
+
+1. decode as UTF-8;
+2. reject BOM;
+3. normalize to Unicode NFC;
+4. remove nothing from the semantic text;
+5. if and only if the stored file has exactly one final LF used solely as
+   file termination, exclude that one final LF from the semantic count;
+6. do not alter any other whitespace;
+7. do not rewrite punctuation;
+8. do not rewrite aliases;
+9. count Unicode code points in the resulting text.
+
+Zero bytes are not removed.
+
+If a zero byte is present:
+
+INPUT_OR_OUTPUT_ENCODING_FAIL
+
+===============================================================================
+17. OUTPUT CONTRACT
+===============================================================================
+
+For each valid input, the compressor must produce exactly one candidate text.
+
+Required output encoding:
+
+UTF-8
+
+BOM:
+
+PROHIBITED
+
+Line endings:
+
+LF
+
+The compressor output must contain only the candidate.
+
+No manual cleanup is allowed.
+
+If the compressor outputs:
+
+comments
+headings
+Markdown fences
+diagnostics
+analysis
+warnings
+extra prose
+
+those bytes remain part of the candidate.
+
+The operator may not edit the output to make it pass.
+
+===============================================================================
+18. RAW OUTPUT TRANSFER AND HASHING
+===============================================================================
+
+If an output is transferred through chat or another interface, the candidate is
+defined as the exact text contained in one declared candidate block.
+
+The operator reconstructs the candidate exactly as received.
+
+RAW_OUTPUT_SHA256 is computed by code at receipt.
+
+The model or compressor is not treated as the authority for the received hash.
+
+The operator records:
+
+received byte length
+received SHA-256
+semantic character length
+
+If transfer corruption is detected before scoring:
+
+TRANSFER_FAILURE
+
+The run remains recorded and may not be silently replaced.
+
+===============================================================================
+19. DETERMINISM REQUIREMENT
+===============================================================================
+
+Every valid input is executed twice.
+
+For each input i:
+
+OUTPUT_i_A
+OUTPUT_i_B
+
+must be byte-identical.
+
+Required:
+
+SHA256(OUTPUT_i_A)
+=
+SHA256(OUTPUT_i_B)
+
+If not:
+
+DETERMINISM_FAIL_i
+
+and that input fails Level 1.
+
+The duplicate execution is a determinism check.
+
+It is NOT counted as a sixth, seventh, eighth, ninth, or tenth experimental
+input.
+
+Thus:
+
+PRIMARY_INPUT_COUNT = 5
+EXECUTION_COUNT_FOR_VALID_INPUTS = 10
+
+===============================================================================
+20. INVALID-INPUT CONTROL
+===============================================================================
+
+In addition to the five valid inputs, one separate invalid-input control is
+required.
+
+The invalid input is authored by Claude after compressor freeze.
+
+It is included in the same hidden control package covered by the pre-run
+commitment SHA-256.
+
+The invalid input is revealed only after execution together with the rest of
+the committed control package.
+
+The invalid input must be outside the frozen REV3 language.
+
+Expected compressor behavior:
+
+NONZERO_EXIT
+AND
+NO_CANDIDATE_OUTPUT
+
+For this protocol:
+
+NO_CANDIDATE_OUTPUT
+iff
+
+STDOUT_BYTE_LENGTH = 0
+
+AND
+
+NO OUTPUT FILE IS CREATED
+
+The compressor must fail closed.
+
+It must not:
+
+guess
+repair the input
+silently drop invalid text
+emit a partial compression
+emit a candidate based on recognized fragments
+
+If the compressor produces a candidate:
+
+INVALID_INPUT_CONTROL = FAIL
+
+The invalid-input control is not included in the five valid-input compression
+runs.
+
+===============================================================================
+21. ENVIRONMENT
+===============================================================================
+
+Required execution environment:
+
+Python
+
+Allowed dependencies:
+
+PYTHON_STANDARD_LIBRARY_ONLY
+
+Network use:
+
+PROHIBITED
+
+Verification requirement:
+
+source review must confirm that the frozen compressor imports no
+network-capable modules and invokes no subprocess or external command capable
+of network access.
+
+OS-level network isolation shall be recorded if available.
+
+If OS-level network isolation is not available:
+
+NETWORK_ISOLATION = NOT_ENFORCED_AT_OS_LEVEL
+
+and this absence must be recorded as a methodological limitation.
+
+The compressor may read only:
+
+1. current input text;
+2. frozen REV3 grammar;
+3. its own frozen source/runtime files;
+4. `level0_extract_v0_4.py` only if that dependency was declared and frozen.
+
+The compressor may not read:
+
+repository-wide files by discovery
+V
+Q
+comparator
+hidden controls other than the current control input supplied for that run
+previous outputs
+previous scores
+external files
+network resources
+
+The exact Python version and operating environment must be recorded in the run
+record.
+
+===============================================================================
+22. FRESH EXECUTION CONTEXT
+===============================================================================
+
+Every execution MUST begin in a fresh process.
+
+Fresh context is mandatory.
+
+No valid run may depend on mutable state from a previous run.
+
+The compressor shall not receive:
+
+previous candidate outputs
+previous evaluator results
+previous lengths
+previous control references
+manual correction feedback
+
+Violation:
+
+RUN_PROTOCOL_VIOLATION
+
+The affected input fails.
+
+===============================================================================
+23. WHAT COUNTS AS A VALID-INPUT RUN
+===============================================================================
+
+A valid-input run begins when the frozen compressor process receives:
+
+current input
++
+frozen grammar
+
+and execution begins.
+
+Once execution begins, the run counts.
+
+The following count as failures:
+
+timeout
+exception
+nonzero exit
+empty output
+malformed UTF-8
+BOM
+grammar-invalid output
+UNRESOLVED
+INVARIANT_LOST
+INVALID_TRANSFORMATION
+FACT_INVENTED
+BLOCKER caused by compressor output
+length failure
+determinism failure
+protocol violation
+
+No undesirable result may be deleted and replaced.
+
+===============================================================================
+24. INFRASTRUCTURE FAILURE
+===============================================================================
+
+A failure before the compressor receives the declared input may be recorded as:
+
+NOT_STARTED_INFRASTRUCTURE_FAILURE
+
+Such an event is not itself a compressor run.
+
+After the compressor receives the input:
+
+THE RUN COUNTS.
+
+No discretionary rerun is permitted.
+
+===============================================================================
+25. PRIMARY PASS CONDITION PER VALID INPUT
+===============================================================================
+
+For L1_R01:
+
+PASS_1
+iff
+
+TWIN_VALID against V_1
+AND
+OUTPUT_LENGTH_1 / INPUT_LENGTH_1 < 0.70
+AND
+OUTPUT_1_A is byte-identical to OUTPUT_1_B
+AND
+NO_PROTOCOL_VIOLATION
+
+For each control i ∈ {2,3,4,5}:
+
+PASS_i
+iff
+
+TWIN_VALID against V_i
+AND
+NOT TWIN_VALID against original V
+AND
+OUTPUT_LENGTH_i / INPUT_LENGTH_i < 0.70
+AND
+OUTPUT_i_A is byte-identical to OUTPUT_i_B
+AND
+NO_PROTOCOL_VIOLATION
+
+===============================================================================
+26. PRIMARY LEVEL 1 ENDPOINT
+===============================================================================
+
+LEVEL1_PRIMARY_PASS
+iff
+
+PASS_1
+AND
+PASS_2
+AND
+PASS_3
+AND
+PASS_4
+AND
+PASS_5
+AND
+INVALID_INPUT_CONTROL = PASS
+
+Anything less:
+
+LEVEL1_PRIMARY_FAIL
+
+There is no best-of-N selection.
+
+===============================================================================
+27. NO SUCCESS-RATE CLAIM
+===============================================================================
+
+A result of:
+
+5 / 5 valid inputs passed
+
+does NOT establish a statistical success probability.
+
+It does NOT justify statements such as:
+
+"the compressor succeeds 100% of the time"
+
+or:
+
+"the expected success rate is 100%"
+
+The five inputs form a finite protocol set, not a statistical sample with a
+predefined population model.
+
+Only the observed finite result may be reported.
+
+===============================================================================
+28. ROLES
+===============================================================================
+
+FOUNDER / FINAL GOVERNANCE:
+
+Toni Mladenovski
+
+PROTOCOL DRAFTING:
+
+ChatGPT
+
+COMPRESSOR IMPLEMENTATION:
+
+ChatGPT
+
+CONTROL AUTHOR:
+
+Claude
+
+PRACTICAL OPERATOR:
+
+Claude
+
+SCORER / INDEPENDENT REVIEWER:
+
+Claude
+
+SCORING SOURCE:
+
+fresh clone of repository containing frozen evaluator V0.4 at commit:
+
+eaa3593d414556d4197a840723d9296e9969c27b
+
+ROLE CONCENTRATION LIMITATION:
+
+Claude is simultaneously:
+
+CONTROL_AUTHOR
+OPERATOR
+SCORER
+
+This is a methodological limitation.
+
+Mitigations:
+
+deterministic compressor
+public frozen source
+public hashes
+commit-reveal controls
+public post-run control disclosure
+reproducible scoring
+ability for third parties to rerun the full experiment
+
+This role concentration must remain disclosed in any Level 1 result.
+
+===============================================================================
+29. TIMESTAMPS
+===============================================================================
+
+Execution timestamps are recorded by the operator.
+
+The compressor does not self-certify authoritative timestamps.
+
+For each execution, record:
+
+START_TIMESTAMP
+END_TIMESTAMP
+
+using the operator environment clock.
+
+===============================================================================
+30. REQUIRED RECORD FOR EACH VALID INPUT
+===============================================================================
+
+Each valid input record shall include:
+
+RUN_ID
+
+INPUT_ROLE
+ORIGINAL_OR_CONTROL
+
+INPUT_SHA256
+INPUT_BYTE_LENGTH
+INPUT_SEMANTIC_CHARACTER_LENGTH
+
+REFERENCE_V_SHA256
+
+COMPRESSOR_SHA256
+COMPRESSOR_VERSION
+
+GRAMMAR_SHA256
+
+PYTHON_VERSION
+OPERATING_ENVIRONMENT
+
+EXECUTION_A_START
+EXECUTION_A_END
+EXECUTION_A_EXIT_CODE
+OUTPUT_A_SHA256
+OUTPUT_A_BYTE_LENGTH
+OUTPUT_A_SEMANTIC_CHARACTER_LENGTH
+
+EXECUTION_B_START
+EXECUTION_B_END
+EXECUTION_B_EXIT_CODE
+OUTPUT_B_SHA256
+OUTPUT_B_BYTE_LENGTH
+OUTPUT_B_SEMANTIC_CHARACTER_LENGTH
+
+DETERMINISM_PASS
+
+POSITIVE_COMPARATOR_VERDICT
+
+ANTI_CONSTANT_COMPARATOR_VERDICT
+or
+NOT_APPLICABLE for L1_R01
+
+LENGTH_RATIO
+
+LENGTH_PASS
+
+RUN_STATUS
+
+ERROR_OR_BLOCKER
+if any
+
+===============================================================================
+31. REQUIRED RECORD FOR INVALID INPUT
+===============================================================================
+
+Record:
+
+INVALID_INPUT_SHA256
+
+INVALID_INPUT_BYTE_LENGTH
+
+COMPRESSOR_SHA256
+
+GRAMMAR_SHA256
+
+START_TIMESTAMP
+END_TIMESTAMP
+
+EXIT_CODE
+
+STDOUT_BYTE_LENGTH
+
+STDERR_SHA256
+if stderr exists
+
+CANDIDATE_CREATED
+
+INVALID_INPUT_CONTROL_STATUS
+
+Expected:
+
+EXIT_CODE != 0
+CANDIDATE_CREATED = FALSE
+
+===============================================================================
+32. REQUIRED LEVEL 1 ARTIFACTS
+===============================================================================
+
+The final Level 1 evidence package shall preserve:
+
+LEVEL1_PROTOCOL_V0.4
+
+protocol SHA-256
+
+frozen compressor source
+
+compressor SHA-256
+
+compressor leakage-review record
+
+compressor freeze record
+
+control-package commitment SHA-256
+
+revealed control package
+
+control-package SHA-256 verification
+
+all five valid input files
+
+all five reference V_i files
+
+invalid-input control
+
+all ten valid-input raw compressor outputs
+
+invalid-input execution record
+
+all extractor outputs
+
+all comparator outputs
+
+per-input result records
+
+aggregate result record
+
+environment record
+
+SHA256SUMS
+
+No failed evidence may be silently removed.
+
+===============================================================================
+33. PRE-RUN FREEZE REQUIREMENTS
+===============================================================================
+
+Before the original or any hidden control is executed, freeze:
+
+A. LEVEL1_PROTOCOL_V0.4
+B. compressor source
+C. compressor SHA-256
+D. dependency declaration
+E. Python/runtime requirements
+F. valid-input count = 5
+G. determinism rule
+H. invalid-input control rule
+I. per-input length rule
+J. positive scoring rule
+K. anti-constant scoring rule
+L. result schemas
+
+Before control execution, additionally commit:
+
+CONTROL_PACKAGE_SHA256
+
+Rule:
+
+FREEZE
+→ COMMIT
+→ EXECUTE
+→ REVEAL
+→ SCORE
+
+NOT:
+
+EXECUTE
+→ MODIFY
+→ RESCORE
+
+===============================================================================
+34. COMPRESSOR CODE REVIEW
+===============================================================================
+
+Before compressor freeze, Claude performs a source review for:
+
+fixture-specific constants
+M_0 fingerprints
+precomputed outputs
+V/Q access
+comparator import
+network access
+undeclared file reads
+nondeterministic operations
+state persistence
+hidden dependency use
+
+Review outcome must be:
+
+LEAKAGE_REVIEW = PASS
+
+before control authoring begins.
+
+If the source is changed after the review:
+
+the previous review is invalid
+and a new review is required.
+
+===============================================================================
+35. IMMUTABILITY DURING LEVEL 1
+===============================================================================
+
+During execution:
+
+GRAMMAR_REV3 = IMMUTABLE
+
+EVALUATOR_V0.4 = IMMUTABLE
+
+COMPRESSOR = IMMUTABLE
+
+PROTOCOL_V0.4 = IMMUTABLE
+
+CONTROL_PACKAGE_AFTER_COMMITMENT = IMMUTABLE
+
+If a defect is discovered:
+
+do not patch in place.
+
+Record the failure.
+
+Any repair requires:
+
+new version
+new hashes
+new freeze
+new control commitment
+new execution cycle
+
+===============================================================================
+36. KNOWN PUBLIC 481-CHARACTER RENDERING
+===============================================================================
+
+A valid 481-character rendering of original M_0 is already public.
+
+The frozen grammar JSON itself does NOT contain that exact 481-character text.
+
+The grammar does contain a description of a minimum-rendering algorithm.
+
+Therefore:
+
+LEVEL1_DIFFICULTY_CLAIM = PROHIBITED
+
+Level 1 does not test whether discovering the original compact solution is
+difficult.
+
+The held-out controls are included specifically to test whether the compressor
+reads and transforms each actual input instead of emitting the known original
+solution.
+
+===============================================================================
+37. SHARED-PARSER CLAIM LIMITATION
+===============================================================================
+
+If the compressor imports `level0_extract_v0_4.py`:
+
+Level 1 demonstrates:
+
+END_TO_END_PIPELINE_CONSISTENCY
+under
+SHARED_PARSER_IMPLEMENTATION
+
+It does NOT demonstrate:
+
+INDEPENDENT_PARSER_AGREEMENT
+
+If the compressor implements an independent parser from the frozen grammar,
+that fact may be reported, but no stronger claim is permitted unless separately
+validated.
+
+===============================================================================
+38. PERMITTED CONCLUSION AFTER PASS
+===============================================================================
+
+If Level 1 passes, the strongest permitted conclusion is:
+
+"Under frozen LEVEL1_PROTOCOL_V0.4, the frozen deterministic compressor
+produced byte-deterministic outputs for five distinct valid REV3 inputs. Each
+output was shorter than 70% of its corresponding input and was judged
+TWIN_VALID against its input-specific reference by frozen evaluator V0.4.
+For the four held-out controls, the outputs were not TWIN_VALID against the
+original V. The compressor also failed closed on the declared invalid-input
+control."
+
+No stronger conclusion follows automatically.
+
+===============================================================================
+39. PROHIBITED CLAIMS AFTER PASS
+===============================================================================
+
+A Level 1 pass does NOT establish:
+
+MEMORY IS PROVEN
+NOVA Q MEMORY THEORY IS VALIDATED
+GENERAL SEMANTIC MEMORY IS VALIDATED
+UNRESTRICTED NATURAL LANGUAGE PRESERVATION IS VALIDATED
+GENERAL COMPRESSION ABILITY IS VALIDATED
+A 100% SUCCESS RATE
+AI MEMORY IS VALIDATED
+BIOLOGICAL MEMORY IS EXPLAINED
+PHYSICAL INFORMATION LAW IS ESTABLISHED
+AGI
+ASI
+GENERAL THEOREM
+
+===============================================================================
+40. FAILURE INTERPRETATION
+===============================================================================
+
+A Level 1 failure means:
+
+the frozen compressor did not satisfy frozen LEVEL1_PROTOCOL_V0.4
+
+for the tested finite input set.
+
+It does not by itself invalidate:
+
+the frozen input package
+REV3 grammar
+V0.4 evaluator calibration
+
+unless separate evidence identifies a defect in those artifacts.
+
+===============================================================================
+41. LEVEL LADDER BOUNDARY
+===============================================================================
+
+LEVEL 0:
+evaluator calibration
+
+LEVEL 1:
+deterministic restricted-language end-to-end pipeline validation
+
+LEVEL 2:
+multi-step / chain transformation preservation
+
+LEVEL 3 OR LATER:
+broader output-form freedom required before stronger MEMORY-oriented claims
+may even be considered
+
+Core rule:
+
+EACH LEVEL SUPPORTS ONLY WHAT THAT LEVEL TESTED.
+
+PASSING LEVEL 1 DOES NOT GRANT HIGHER-LEVEL CLAIMS.
+
+===============================================================================
+42. GOVERNANCE PRINCIPLE
+===============================================================================
+
+VALIDATION_METHOD MUST MATCH CLAIM_DOMAIN.
+
+For Level 1:
+
+CLAIM_DOMAIN:
+
+restricted-language deterministic software pipeline
+
+VALIDATION_METHOD:
+
+frozen deterministic compressor
++
+five distinct valid inputs
++
+held-out controls
++
+commit-reveal
++
+input-specific references
++
+anti-constant checks
++
+determinism replay
++
+invalid-input fail-closed control
++
+frozen V0.4 scoring
++
+artifact preservation
+
+===============================================================================
+43. PRE-FREEZE STATUS
+===============================================================================
+
+LEVEL1_PROTOCOL_V0.4 = PRE_FREEZE_DRAFT
+
+COMPRESSOR_CODE = NOT_CREATED
+
+COMPRESSOR_FREEZE = NOT_STARTED
+
+CONTROL_PACKAGE = NOT_CREATED
+
+CONTROL_COMMITMENT = NOT_CREATED
+
+LEVEL1_RUNS = NOT_STARTED
+
+RESULT = NOT_AVAILABLE
+
+NEXT ACTION:
+
+INDEPENDENT_PROTOCOL_REVIEW
+→ FOUNDER FREEZE DECISION
+→ EXTERNAL PROTOCOL COMMIT
+→ BUILD COMPRESSOR
+→ LEAKAGE REVIEW
+→ COMPRESSOR FREEZE
+→ AUTHOR HIDDEN CONTROLS
+→ COMMIT CONTROL PACKAGE HASH
+→ EXECUTE
+→ REVEAL
+→ SCORE
+→ PUBLISH
+
+===============================================================================
+END LEVEL1_PROTOCOL_V0.4
+===============================================================================
