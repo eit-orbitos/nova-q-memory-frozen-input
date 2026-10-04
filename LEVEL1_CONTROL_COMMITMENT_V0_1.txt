@@ -1,0 +1,38 @@
+NOVA Q / EIT — LEVEL 1 CONTROL PACKAGE COMMITMENT (commit-reveal)
+
+Protocol: LEVEL1_PROTOCOL_V0.4, sections 10, 11 and 20
+Protocol commit: 6ce264c71c3e8facf6b77de277fb520497f06d7c
+Frozen compressor: level1_compressor_v0_1.py
+  sha256 0ed99cb21048e8e1f8c9e526469c23697d5b6b414401e85120f5c26e360dba81
+  freeze commit 2516d18f2213891ac056108f8a65f9dd4566a098 (2026-10-04T14:20:31-04:00)
+
+Control author: Claude
+Authored after the compressor freeze commit: YES
+Frozen compressor run on the controls before this commitment: NO
+
+Hidden package: LEVEL1_CONTROL_PACKAGE_V0_1.json
+  byte length: 17661
+  CONTROL_PACKAGE_SHA256:
+  fae2f3bc59c847855b1256739ade8b10bf9257646637910002cde08d4bc9c257
+
+Authoring script (also hidden until reveal): author_controls.py
+  sha256 93cd9278a355101f97bdd46f83110e4bc96d0a159e0f0dfb8d5f0106af32f40a
+
+Package contents (not disclosed before execution):
+  4 held-out control inputs (L1_R02 .. L1_R05), each with its reference V_i
+  and one feasibility witness W_i;
+  1 invalid-input control;
+  1 random nonce.
+
+Checks made at authoring time with frozen evaluator V0.4 (not with the compressor):
+  each control input: extractor status PARSED, TWIN_VALID against its own V_i,
+  not TWIN_VALID against the original V;
+  each witness: TWIN_VALID against V_i and length ratio below 0.70;
+  invalid input: extractor status UNRESOLVED.
+
+The package is revealed only after all Level 1 executions are complete.
+If the revealed package does not reproduce the hash above:
+CONTROL_COMMITMENT_INVALID.
+
+This commitment proves the package did not change after commitment.
+It does not prove the controls were authored without bias.
