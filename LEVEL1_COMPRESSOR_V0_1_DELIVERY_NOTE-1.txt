@@ -1,0 +1,82 @@
+LEVEL1_COMPRESSOR_V0.1 — DELIVERY NOTE
+
+Protocol:
+LEVEL1_PROTOCOL_V0.4
+
+Protocol commit:
+6ce264c71c3e8facf6b77de277fb520497f06d7c
+
+Protocol SHA-256:
+627388d26e451dc8d0410ca16b6d2c3fcd5389813c75f86cdeef28685b58bce1
+
+Target grammar:
+LEVEL0_CONSTRAINED_LANGUAGE_V0.1_REV3
+
+Grammar SHA-256:
+d7a68615f38beac2808936bea9591c2a68fc22e0ae10024159d2a49682252852
+
+STATUS:
+SOFTWARE_CANDIDATE
+NOT_FROZEN
+NOT_CONTROL_TESTED
+
+PARSER STRATEGY:
+SHARED_PARSER_LIMITATION = False
+
+The compressor does NOT import level0_extract_v0_4.py.
+It independently compiles the frozen REV3 production templates and token
+regexes from the grammar JSON.
+
+ALLOWED INPUTS:
+--grammar
+--input
+
+OUTPUT:
+--out
+
+VALID INPUT:
+exit 0
+stdout empty
+candidate written to --out
+
+INVALID INPUT:
+non-zero exit
+stdout empty
+no --out file
+diagnostic on stderr only
+
+DEPENDENCIES:
+Python standard library only.
+
+NETWORK:
+No network modules are imported.
+No subprocess module is imported.
+No subprocess calls exist.
+
+FIXTURE LEAKAGE:
+No V.
+No Q.
+No fact IDs.
+No 20-fact table.
+No original M_0 hash.
+No known 481-character candidate.
+No fixture-specific subject/value constants.
+No hidden-control constants.
+
+ALGORITHM:
+1. Verify exact frozen grammar SHA-256.
+2. Parse the input using an independent implementation of REV3.
+3. Require every clause to match exactly one frozen production.
+4. Convert each parsed fact to canonical semantic fields.
+5. For each fact, enumerate valid grammar productions and aliases.
+6. Select the shortest valid rendering that reparses to the identical fact.
+7. Preserve input fact order.
+8. Reparse the full generated candidate internally.
+9. Write output only after exact self-check succeeds.
+
+DETERMINISM:
+Same grammar bytes + same input bytes -> same output bytes.
+
+KNOWN LIMITATION:
+This is still grammar-derived compression. It tests the Level 1 restricted
+pipeline, not general natural-language compression or MEMORY theory.

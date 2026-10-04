@@ -1,0 +1,13 @@
+{'n': 400, 'gen_invalid': 0, 'rc_fail': 0, 'stdout': 0, 'not_twin': 0, 'anti_const_fail': 0, 'nondet': 0, 'ratio_ge_070': 39, 'ratio_lt_070': 361}
+comment       rc=2 stdout=0 out_file=none
+negation      rc=2 stdout=0 out_file=none
+empty         rc=2 stdout=0 out_file=none
+crlf          rc=2 stdout=0 out_file=none
+bom           rc=2 stdout=0 out_file=none
+bad_utf8      rc=2 stdout=0 out_file=none
+nul           rc=2 stdout=0 out_file=none
+duplicate     rc=2 stdout=0 out_file=none
+bad_date      rc=2 stdout=0 out_file=none
+unknown_unit  rc=2 stdout=0 out_file=none
+markdown      rc=2 stdout=0 out_file=none
+huge_number   rc=0 stdout=0 out_file=CREATED
