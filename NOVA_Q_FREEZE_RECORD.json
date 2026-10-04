@@ -1,0 +1,86 @@
+{
+ "artifact": "NOVA_Q_FREEZE_RECORD",
+ "status": "FROZEN",
+ "created": "2026-10-03",
+ "author_founder_architect": "Toni Mladenovski",
+ "external_timestamp": "PENDING_OWN_DEPOSIT",
+ "canon_spec_version": "CANON_SPEC_V0.1",
+ "canon_spec_sha256": "9760b32d23ab1db4639e49211d75c0116726f7060fff6d199ef1e554cb760e92",
+ "hash_method": "SHA256 over canonical JSON bytes (V,Q) / raw UTF-8 NFC file bytes (M0, CANON_SPEC, ORIGIN)",
+ "artifacts": [
+  {
+   "artifact": "FIXTURE_01_V",
+   "version": "0.1",
+   "sha256": "4898726e8f5425ce50930d14161940a845a2ec941e601a1988ca4d6c6e046eb4",
+   "form": "canonical JSON array"
+  },
+  {
+   "artifact": "FIXTURE_01_Q",
+   "version": "0.1",
+   "sha256": "8aa788a8bff223c97bac04de02171da28e9d9b8be9415f45a17e71614bd97b19",
+   "form": "canonical JSON array"
+  },
+  {
+   "artifact": "FIXTURE_01_M0",
+   "version": "0.1-v4",
+   "sha256": "c0f1ffc9bc2679380ee8da77a8e98a0fb2987b606f8b0aaa69a40d4be758d439",
+   "byte_length": 791,
+   "form": "UTF-8 NFC file bytes"
+  },
+  {
+   "artifact": "CANON_SPEC",
+   "version": "V0.1",
+   "sha256": "9760b32d23ab1db4639e49211d75c0116726f7060fff6d199ef1e554cb760e92",
+   "byte_length": 8032,
+   "form": "UTF-8 NFC file bytes"
+  },
+  {
+   "artifact": "ORIGIN",
+   "version": "V0.1-PATCHED",
+   "sha256": "58eff4b31017cdd47fea487926c7936db2212fb71512f55648dcb9b372d10c20",
+   "byte_length": 13886,
+   "form": "UTF-8 NFC file bytes"
+  }
+ ],
+ "freeze_semantics": "FREEZE = INPUT_BYTES_FIXED; FREEZE != TEST_PASSED / MEMORY_MODEL_VALIDATED / NOVELTY_ESTABLISHED",
+ "open_items": [
+  "PROTOCOL not freezable: open-claim extraction / invented-fact detection not yet formally implemented",
+  "LEVEL_0: deterministic extractor + comparator + calibration controls (100% required) before any compressor"
+ ],
+ "change_log": [
+  {
+   "date": "2026-10-03",
+   "artifact": "FIXTURE_01_M0",
+   "change": "line 18 -> 'The backup job retains its backups for 30 days.' (F18 self-standing)",
+   "proposed_by": "ChatGPT (builder)",
+   "accepted_by": "Toni Mladenovski (Founder/Architect)",
+   "verified_by": "Claude + Kimi (independent hash match)",
+   "old_sha256": "a7ca8475655f0a08befedd5c05d6efe8c1ba52e6dddf3c80b78f0d057d8da078",
+   "new_sha256": "c0f1ffc9bc2679380ee8da77a8e98a0fb2987b606f8b0aaa69a40d4be758d439"
+  },
+  {
+   "date": "2026-10-03",
+   "artifact": "PACKAGE",
+   "change": "PACKAGE_FREEZE_STATUS = FROZEN declared by Founder after personal 20/20 bijection review (incl. F18 correction)",
+   "accepted_by": "Toni Mladenovski"
+  }
+ ],
+ "frozen_by": "Toni Mladenovski",
+ "frozen_on": "2026-10-03",
+ "freeze_scope": [
+  "V",
+  "Q",
+  "CANON_SPEC",
+  "ORIGIN",
+  "M_0 / fixture JSON as declared by FREEZE_RECORD"
+ ],
+ "packaging_rule": "Freeze package contains ONLY canonical frozen-input artifacts. V0.1 extractor/comparator and all runtime/generated artifacts are kept separately as historical/test evidence.",
+ "v0_2_requirements": [
+  "CLAUSE_LEVEL_BINDING",
+  "MAGNITUDE_CLASS_REASONING",
+  "ZERO_FALSE_TRANSITION_REQUIREMENT",
+  "DETERMINISTIC_REPLAY",
+  "EXPLICIT_FAILURE — no nearby-token rescue"
+ ],
+ "benchmark_integrity_rule": "After freeze, the evaluator adapts to the benchmark — never the benchmark to the evaluator. If V0.2 fails, fix V0.2, not the fixture."
+}
