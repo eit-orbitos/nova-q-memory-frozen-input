@@ -1,0 +1,580 @@
+{
+  "suite": "heldout_level0_round2",
+  "must_fail": 79,
+  "must_pass": 16,
+  "FALSE_ACCEPTS": [],
+  "FALSE_REJECTS": [],
+  "CRASHES": [],
+  "rows": [
+    {
+      "id": "A01_precision_tail_decimal",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A02_precision_tail_integer",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A03_precision_tail_latency",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A04_precision_tail_compact",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A05_precision_29th_digit",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A06_huge_integer",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A07_off_by_small",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A08_comma_group_wrong",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "A09_comma_value_change",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A10_leading_zero",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "A11_negative",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "A12_exponent",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "A13_number_word_wrong",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "A14_number_word_compound",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "A15_fraction",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "B01_exact_to_approx",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "B02_approx_to_exact",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "B03_approx_dropped",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "B04_tilde_on_exact",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "B05_double_modifier",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "B06_at_most",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "C01_Mi_to_MB",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "C02_Mi_to_megabytes",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "C03_Gi_to_GB",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "C04_Mi_to_Gi",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "C05_ms_to_s",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "C06_degF",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "C07_unit_class_cross",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "C08_Gbps",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "C09_unit_glued",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D01_subject_swap",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "D02_state_flip",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "D03_negation",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D04_inactive",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D05_was_active",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D06_half_duplex",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D07_region_change",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "D08_region_case",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D09_firmware_extra",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "D10_firmware_10",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "D11_policy_lifo",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D12_schedule_weekly",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D13_mode_test",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "D14_relation_cross",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "E01_date_shift",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "E02_date_invalid",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "E03_date_us_order",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "E04_date_slash",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "E05_date_year",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "E06_date_time_suffix",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "F01_drop_one",
+      "kind": "must_fail",
+      "verdict": "INVARIANT_LOST",
+      "detail": ""
+    },
+    {
+      "id": "F02_drop_last",
+      "kind": "must_fail",
+      "verdict": "INVARIANT_LOST",
+      "detail": ""
+    },
+    {
+      "id": "F03_invented_extra",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "F04_contradiction_added",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "F05_contradiction_value",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION",
+      "detail": ""
+    },
+    {
+      "id": "F06_duplicate_same",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "DUPLICATE_FACT_ASSERTION"
+    },
+    {
+      "id": "F07_duplicate_alias",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "DUPLICATE_FACT_ASSERTION"
+    },
+    {
+      "id": "F08_empty",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "NO_NONEMPTY_CLAUSES"
+    },
+    {
+      "id": "F09_only_separators",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "NO_NONEMPTY_CLAUSES"
+    },
+    {
+      "id": "G01_trailing_comment",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G02_hedge_prefix",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G03_conditional",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G04_free_sentence",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G05_hash_comment",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G06_colon_note",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G07_question",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G08_zero_width",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G09_homoglyph_cyrillic_A",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G10_fullwidth_digits",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G11_arabic_digits",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G12_double_space",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G13_tab",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G14_nbsp",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G15_and_joined",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G16_comma_joined",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G17_lowercase_subject",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G18_ring_above_C",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G19_bom_then_wrong",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "G20_fact_id_leak",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED",
+      "detail": "FULL_TEXT_CONSUMPTION_FAILED"
+    },
+    {
+      "id": "P01_M0_frozen",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P02_minimum_compact",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P03_reordered",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P04_one_line_periods",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P05_alias_units",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P06_mebibytes_word",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P07_number_word_64",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P08_iso_date",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P09_approx_abbrev",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P10_tilde_degC",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P11_trailing_zero",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P12_comma_1000",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P13_mixed_separators",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P14_fifo_long",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P15_every_day",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    },
+    {
+      "id": "P16_no_exactly",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID",
+      "detail": ""
+    }
+  ]
+}

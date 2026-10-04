@@ -1,0 +1,4 @@
+9 'The backup job retains its backups for 30 day'
+2 'Sensor X1 temperature=~21.50 °C'
+1 'Storage unit S1 provides exactly 2,048 Gi of capacity'
+1 'Queue Q depth=4,096 entry'

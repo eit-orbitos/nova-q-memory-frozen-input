@@ -1,0 +1,567 @@
+{
+  "suite": "heldout_level0_round3",
+  "target": "V0.4",
+  "must_fail": 84,
+  "must_pass": 22,
+  "FALSE_ACCEPTS": [],
+  "FALSE_REJECTS": [],
+  "CRASHES_OR_BLOCKERS": [],
+  "fuzz": {
+    "seed": 20261004,
+    "mutants": 118746,
+    "accepted": 696,
+    "benign": {
+      "separator_or_spacing_only": 380
+    },
+    "to_inspect": 316,
+    "crashes": 0
+  },
+  "cli_defects": [],
+  "rows": [
+    {
+      "id": "N01_tail_37_zeros",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "N02_tail_300_zeros",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "N03_int_5000_digits",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N04_leading_zeros",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N05_space_in_number",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N06_decimal_comma",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N07_two_dots",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N08_superscript",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N09_vulgar_fraction",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N10_word_no_hyphen",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N11_word_capital",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N12_dozen",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N13_comma_million",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "N14_point_five_more",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "N15_trailing_dot_digit",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N16_hex",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N17_plus_sign",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "N18_range",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "Q01_nearly",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "Q02_tilde_space",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "Q03_approx_no_dot",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "Q04_both_qualifiers",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "Q05_less_than",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "Q06_at_least",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "Q07_exactly_tilde",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U01_mi_lower",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U02_MIB_upper",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U03_msec",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U04_MBPS",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U05_Celsius_bare",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U06_K",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U07_gigabytes_for_Gi",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "U08_no_unit",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U09_unit_before",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "U10_weeks",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S01_relation_swap_capacity",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S02_relation_swap_memory",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S03_extra_system_active",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S04_state_compact_flip",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S05_extra_after_dot",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S06_version_then_fact",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S07_version_prefix",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S08_version_two_parts",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S09_Production_cap",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S10_Fifo_case",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S11_region_underscore",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S12_region_trailing_dash",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S13_region_other",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S14_subject_unknown",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "S15_duplex_on_node",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S16_swap_two_values",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "S17_swap_two_states",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "D01_iso_single_digit",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D02_month_abbrev",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D03_year_zero",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D04_feb_30",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D05_day_zero",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D06_ordinal",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D07_month_13",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D08_swapped_iso",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "D09_one_day_off_iso",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "X01_whole_text_twice",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X02_replace_with_duplicate",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X03_alias_duplicate",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X04_json_of_V",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X05_verdict_string",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X06_nul_byte",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X07_line_separator_hide",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X08_nel_hide",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X09_formfeed",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X10_rtl_override",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X11_combining_mark",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X12_soft_hyphen",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X13_non_breaking_hyphen",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X14_markdown_strike",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X15_html_comment",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X16_quoted",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X17_not_prefix",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X18_only_19_plus_junk_word",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X19_equals_spaces",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X20_colon_form",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "X21_min_with_one_change",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "X22_min_drop_qualifier",
+      "kind": "must_fail",
+      "verdict": "INVALID_TRANSFORMATION"
+    },
+    {
+      "id": "X23_min_truncated",
+      "kind": "must_fail",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "P01_M0",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P02_MIN",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P03_leading_trailing_spaces",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P04_semicolons_spaces",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P05_roughly",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P06_around",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P07_approx_equal_to",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P08_milliseconds",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P09_degrees_celsius",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P10_gibibytes",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P11_iso_in_verbose",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P12_longdate_in_compact",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P13_trailing_zeros_many",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P14_int_dot_zeros",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P15_2048_comma",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P16_thirty_word",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P17_entry_singular",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P18_fifo_lower",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P19_full_hyphen_duplex",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P20_snake_subjects",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P21_blank_lines",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "P22_shuffled_mixed",
+      "kind": "must_pass",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "I01_CRLF_line_endings",
+      "kind": "info",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "I02_greek_question_mark_as_semicolon",
+      "kind": "info",
+      "verdict": "TWIN_VALID"
+    },
+    {
+      "id": "I03_BOM_prefix",
+      "kind": "info",
+      "verdict": "UNRESOLVED"
+    }
+  ]
+}
