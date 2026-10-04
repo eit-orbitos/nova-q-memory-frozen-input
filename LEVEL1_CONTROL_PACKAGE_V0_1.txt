@@ -1,0 +1,582 @@
+{
+ "artifact": "LEVEL1_CONTROL_PACKAGE_V0.1",
+ "authored_after_compressor_freeze": true,
+ "commitment_nonce": "d5bb64d469a7364689d64b72c319c6ee",
+ "compressor_freeze_commit": "2516d18f2213891ac056108f8a65f9dd4566a098",
+ "compressor_run_on_controls_before_commitment": false,
+ "compressor_sha256": "0ed99cb21048e8e1f8c9e526469c23697d5b6b414401e85120f5c26e360dba81",
+ "control_author": "Claude",
+ "controls": [
+  {
+   "V": [
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "node_a",
+     "unit": "Mi",
+     "value": 96
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "node_b",
+     "unit": "Mi",
+     "value": 48
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "memory_capacity",
+     "subject": "node_c",
+     "unit": "Mi",
+     "value": 16
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "node_d",
+     "unit": "Mi",
+     "value": 128
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "state",
+     "subject": "node_a",
+     "unit": "state",
+     "value": "DISABLED"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "state",
+     "subject": "node_d",
+     "unit": "state",
+     "value": "ACTIVE"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "node_count",
+     "subject": "cluster_1",
+     "unit": "",
+     "value": 13
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "max_latency",
+     "subject": "cluster_1",
+     "unit": "ms",
+     "value": 250
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "region",
+     "subject": "cluster_1",
+     "unit": "",
+     "value": "eu-west"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "bandwidth",
+     "subject": "link_ab",
+     "unit": "Mbps",
+     "value": 10000
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "duplex",
+     "subject": "link_ab",
+     "unit": "state",
+     "value": "FULL"
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "temperature",
+     "subject": "sensor_x1",
+     "unit": "degC",
+     "value": 21.6
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "calibration_date",
+     "subject": "sensor_x1",
+     "unit": "",
+     "value": "2026-04-19"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "depth",
+     "subject": "queue_q",
+     "unit": "entries",
+     "value": 4097
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "policy",
+     "subject": "queue_q",
+     "unit": "state",
+     "value": "FIFO"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "capacity",
+     "subject": "storage_s1",
+     "unit": "GB",
+     "value": 2048
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "schedule",
+     "subject": "backup_job",
+     "unit": "",
+     "value": "daily"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "retention",
+     "subject": "backup_job",
+     "unit": "days",
+     "value": 31
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "mode",
+     "subject": "system",
+     "unit": "state",
+     "value": "PRODUCTION"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "firmware_version",
+     "subject": "node_c",
+     "unit": "",
+     "value": "4.2.2"
+    }
+   ],
+   "input_text": "Node A has exactly 96 Mi of memory.\nNode B has exactly 48 Mi of memory.\nNode C has about 16 Mi of memory.\nNode D has exactly 128 MiB of memory.\nNode A is disabled.\nNode D is currently active.\nCluster 1 contains thirteen nodes.\nThe maximum latency of cluster 1 is exactly 250 ms.\nCluster 1 is located in the eu-west region.\nLink AB provides exactly 10,000 Mbps of bandwidth.\nLink AB is full-duplex.\nSensor X1 reports a temperature of about 21.6 °C.\nSensor X1 was last calibrated on 19 April 2026.\nQueue Q currently contains exactly 4097 entries.\nQueue Q operates under a FIFO policy.\nStorage unit S1 provides exactly 2048 GB of capacity.\nThe backup job runs daily.\nThe backup job retains its backups for 31 days.\nThe system runs in production mode.\nNode C runs firmware version 4.2.2.\n",
+   "role": "HELD_OUT_CONTROL_1",
+   "run_id": "L1_R02",
+   "witness_text": "Node A memory=96 Mi;Node B memory=48 Mi;Node C memory=~16 Mi;Node D memory=128 Mi;Node A is disabled;Node D is active;Cluster 1 nodes=13;Cluster 1 max_latency=250 ms;Cluster 1 region=eu-west;Link AB bandwidth=10000 Mbps;Link AB is full duplex;Sensor X1 temperature=~21.6 °C;Sensor X1 calibration_date=2026-04-19;Queue Q depth=4097 entry;Queue Q policy=FIFO;Storage S1 capacity=2048 GB;Backup job runs daily;Backup job retention=31 day;System mode=production;Node C firmware=4.2.2"
+  },
+  {
+   "V": [
+    {
+     "qualifier": "APPROX",
+     "relation": "temperature",
+     "subject": "storage_s1",
+     "unit": "degC",
+     "value": 7.25
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "memory_capacity",
+     "subject": "backup_job",
+     "unit": "Mi",
+     "value": 100
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "policy",
+     "subject": "sensor_x1",
+     "unit": "state",
+     "value": "FIFO"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "calibration_date",
+     "subject": "queue_q",
+     "unit": "",
+     "value": "2031-09-01"
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "max_latency",
+     "subject": "link_ab",
+     "unit": "ms",
+     "value": 1250000
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "schedule",
+     "subject": "storage_s1",
+     "unit": "",
+     "value": "daily"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "node_count",
+     "subject": "system",
+     "unit": "",
+     "value": 0
+    }
+   ],
+   "input_text": "Storage unit S1 reports a temperature of approximately equal to 7.250 degrees Celsius; The backup job has approximately one hundred mebibytes of memory; Sensor X1 operates under a first-in, first-out policy; Queue Q was last calibrated on 1 September 2031; The maximum latency of Link AB is roughly 1,250,000 milliseconds; Storage unit S1 runs every day; The system contains exactly zero nodes\n",
+   "role": "HELD_OUT_CONTROL_2",
+   "run_id": "L1_R03",
+   "witness_text": "Storage S1 temperature=~7.25 °C;Backup job memory=~100 Mi;Sensor X1 policy=FIFO;Queue Q calibration_date=2031-09-01;Link AB max_latency=~1250000 ms;Storage S1 runs daily;System nodes=0"
+  },
+  {
+   "V": [
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "queue_q",
+     "unit": "GB",
+     "value": 12
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "memory_capacity",
+     "subject": "sensor_x1",
+     "unit": "MB",
+     "value": 512.5
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "link_ab",
+     "unit": "Gi",
+     "value": 77
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "state",
+     "subject": "sensor_x1",
+     "unit": "state",
+     "value": "DISABLED"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "state",
+     "subject": "cluster_1",
+     "unit": "state",
+     "value": "ACTIVE"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "state",
+     "subject": "queue_q",
+     "unit": "state",
+     "value": "ACTIVE"
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "node_count",
+     "subject": "node_b",
+     "unit": "",
+     "value": 3
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "node_count",
+     "subject": "storage_s1",
+     "unit": "",
+     "value": 1024
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "max_latency",
+     "subject": "node_c",
+     "unit": "ms",
+     "value": 0.125
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "max_latency",
+     "subject": "system",
+     "unit": "ms",
+     "value": 19
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "region",
+     "subject": "node_a",
+     "unit": "",
+     "value": "ap-south1-2b"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "region",
+     "subject": "sensor_x1",
+     "unit": "",
+     "value": "us-east"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "bandwidth",
+     "subject": "node_d",
+     "unit": "Mbps",
+     "value": 40
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "bandwidth",
+     "subject": "cluster_1",
+     "unit": "Mbps",
+     "value": 2.5
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "duplex",
+     "subject": "node_b",
+     "unit": "state",
+     "value": "FULL"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "temperature",
+     "subject": "node_a",
+     "unit": "degC",
+     "value": 0
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "temperature",
+     "subject": "queue_q",
+     "unit": "degC",
+     "value": 88
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "calibration_date",
+     "subject": "node_d",
+     "unit": "",
+     "value": "2028-02-29"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "calibration_date",
+     "subject": "link_ab",
+     "unit": "",
+     "value": "2000-01-01"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "depth",
+     "subject": "storage_s1",
+     "unit": "entries",
+     "value": 1
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "depth",
+     "subject": "node_c",
+     "unit": "entries",
+     "value": 65536
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "policy",
+     "subject": "link_ab",
+     "unit": "state",
+     "value": "FIFO"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "capacity",
+     "subject": "queue_q",
+     "unit": "Mi",
+     "value": 9
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "capacity",
+     "subject": "node_b",
+     "unit": "Mi",
+     "value": 300
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "schedule",
+     "subject": "node_a",
+     "unit": "",
+     "value": "daily"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "retention",
+     "subject": "sensor_x1",
+     "unit": "days",
+     "value": 99
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "retention",
+     "subject": "cluster_1",
+     "unit": "days",
+     "value": 1
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "mode",
+     "subject": "queue_q",
+     "unit": "state",
+     "value": "PRODUCTION"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "firmware_version",
+     "subject": "system",
+     "unit": "",
+     "value": "10.0.3.27"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "firmware_version",
+     "subject": "link_ab",
+     "unit": "",
+     "value": "0.9.12"
+    }
+   ],
+   "input_text": "Queue Q has exactly 12 gigabytes of memory. Sensor X1 has around 512.50 megabytes of memory. Link AB has seventy-seven gibibytes of memory. Sensor X1 is disabled. Cluster 1 is currently active. Queue Q is active. Node B contains approximately 3 nodes. Storage unit S1 contains exactly 1,024 nodes. The maximum latency of Node C is exactly 0.125 milliseconds. The maximum latency of The system is approx. 19 ms. Node A is located in the ap-south1-2b region. Sensor X1 is located in the us-east region. Node D provides exactly 40 mbps of bandwidth. Cluster 1 provides about 2.5 Mbps of bandwidth. Node B is full duplex. Node A reports a temperature of exactly 0 degC. Queue Q reports a temperature of roughly 88.000 degrees Celsius. Node D was last calibrated on 29 February 2028. Link AB was last calibrated on 2000-01-01. Storage unit S1 currently contains exactly 1 entry. Node C currently contains approximately equal to 65,536 entries. Link AB operates under a first-in first-out policy. Queue Q provides exactly 9 mebibytes of capacity. Node B provides around 300 MiB of capacity. Node A runs every day. Sensor X1 retains its backups for exactly ninety-nine days. Cluster 1 retains its backups for 1 day. Queue Q runs in production mode. The system runs firmware version 10.0.3.27. Link AB runs firmware version 0.9.12.",
+   "role": "HELD_OUT_CONTROL_3",
+   "run_id": "L1_R04",
+   "witness_text": "Queue Q memory=12 GB;Sensor X1 memory=~512.5 MB;Link AB memory=77 Gi;Sensor X1 is disabled;Cluster 1 is active;Queue Q is active;Node B nodes=~3;Storage S1 nodes=1024;Node C max_latency=0.125 ms;System max_latency=~19 ms;Node A region=ap-south1-2b;Sensor X1 region=us-east;Node D bandwidth=40 Mbps;Cluster 1 bandwidth=~2.5 Mbps;Node B is full duplex;Node A temperature=0 °C;Queue Q temperature=~88 °C;Node D calibration_date=2028-02-29;Link AB calibration_date=2000-01-01;Storage S1 depth=1 entry;Node C depth=~65536 entry;Link AB policy=FIFO;Queue Q capacity=9 Mi;Node B capacity=~300 Mi;Node A runs daily;Sensor X1 retention=99 day;Cluster 1 retention=1 day;Queue Q mode=production;System firmware=10.0.3.27;Link AB firmware=0.9.12"
+  },
+  {
+   "V": [
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "node_a",
+     "unit": "Mi",
+     "value": 64
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "node_a",
+     "unit": "MB",
+     "value": 64
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "memory_capacity",
+     "subject": "node_b",
+     "unit": "Mi",
+     "value": 32
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "state",
+     "subject": "node_c",
+     "unit": "state",
+     "value": "DISABLED"
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "max_latency",
+     "subject": "cluster_1",
+     "unit": "ms",
+     "value": 250
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "max_latency",
+     "subject": "cluster_1",
+     "unit": "ms",
+     "value": 250
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "temperature",
+     "subject": "sensor_x1",
+     "unit": "degC",
+     "value": 21.5
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "region",
+     "subject": "storage_s1",
+     "unit": "",
+     "value": "sa-north-1"
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "bandwidth",
+     "subject": "link_ab",
+     "unit": "Mbps",
+     "value": 1000
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "calibration_date",
+     "subject": "sensor_x1",
+     "unit": "",
+     "value": "2026-04-18"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "calibration_date",
+     "subject": "sensor_x1",
+     "unit": "",
+     "value": "2026-04-17"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "depth",
+     "subject": "queue_q",
+     "unit": "entries",
+     "value": 4096
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "capacity",
+     "subject": "storage_s1",
+     "unit": "Gi",
+     "value": 2048
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "capacity",
+     "subject": "storage_s1",
+     "unit": "Gi",
+     "value": 2049
+    },
+    {
+     "qualifier": "APPROX",
+     "relation": "retention",
+     "subject": "backup_job",
+     "unit": "days",
+     "value": 30
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "firmware_version",
+     "subject": "node_c",
+     "unit": "",
+     "value": "4.2.1"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "firmware_version",
+     "subject": "node_c",
+     "unit": "",
+     "value": "4.2.1.0"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "mode",
+     "subject": "system",
+     "unit": "state",
+     "value": "PRODUCTION"
+    },
+    {
+     "qualifier": "EXACT",
+     "relation": "schedule",
+     "subject": "backup_job",
+     "unit": "",
+     "value": "daily"
+    }
+   ],
+   "input_text": "Node A has exactly 64 Mi of memory;\nNode A has exactly 64 MB of memory.\nnode_b memory=32 Mi;\nnode_c state=disabled.\nThe maximum latency of Cluster 1 is approximately 250 ms;\nThe maximum latency of Cluster 1 is exactly 250 ms.\nSensor X1 reports a temperature of about 21.5 degrees Celsius;\nStorage unit S1 is located in the sa-north-1 region.\nLink AB provides approximately equal to 1,000 Mbps of bandwidth;\nsensor_x1 calibration_date=18 April 2026.\nSensor X1 was last calibrated on 17 April 2026;\nQueue Q currently contains exactly 4096.0 entries.\nStorage unit S1 provides exactly 2048 gibibytes of capacity;\nStorage unit S1 provides exactly 2049 gibibytes of capacity.\nThe backup job retains its backups for approximately thirty days;\nNode C runs firmware version 4.2.1.\nNode C runs firmware version 4.2.1.0;\nThe system runs in production mode.\nThe backup job runs every day;\n",
+   "role": "HELD_OUT_CONTROL_4",
+   "run_id": "L1_R05",
+   "witness_text": "Node A memory=64 Mi;Node A memory=64 MB;Node B memory=32 Mi;Node C is disabled;Cluster 1 max_latency=~250 ms;Cluster 1 max_latency=250 ms;Sensor X1 temperature=~21.5 °C;Storage S1 region=sa-north-1;Link AB bandwidth=~1000 Mbps;Sensor X1 calibration_date=2026-04-18;Sensor X1 calibration_date=2026-04-17;Queue Q depth=4096 entry;Storage S1 capacity=2048 Gi;Storage S1 capacity=2049 Gi;Backup job retention=~30 day;Node C firmware=4.2.1;Node C firmware=4.2.1.0;System mode=production;Backup job runs daily"
+  }
+ ],
+ "invalid_input": {
+  "input_text": "Node A has exactly 64 Mi of memory.\nNode B has exactly 32 Mi of memory.\nNode C has exactly 16 Mi of memory.\nNode D has exactly 128 Mi of memory.\nNode A is currently active.\nNode D is disabled.\nCluster 1 contains twelve nodes.\nThe maximum latency of cluster 1 is approximately 250 ms.\nCluster 1 is located in the eu-central region.\nNode B is currently inactive.\nLink AB provides exactly 1000 Mbps of bandwidth.\nLink AB is full duplex.\nSensor X1 reports a temperature of about 21.5 °C.\nSensor X1 was last calibrated on 18 April 2026.\nQueue Q currently contains exactly 4096 entries.\n",
+  "reason_outside_REV3": "clause 'Node B is currently inactive' matches no production",
+  "role": "INVALID_INPUT_CONTROL"
+ },
+ "protocol": "LEVEL1_PROTOCOL_V0.4",
+ "protocol_commit": "6ce264c71c3e8facf6b77de277fb520497f06d7c"
+}
