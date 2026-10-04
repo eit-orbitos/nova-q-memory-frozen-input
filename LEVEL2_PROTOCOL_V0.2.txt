@@ -1,0 +1,543 @@
+===============================================================================
+NOVA Q / EIT
+LEVEL2_PROTOCOL_V0.2
+CANONICALIZATION AND LOSS-PROPAGATION CHAIN VALIDATION
+===============================================================================
+
+AUTHOR / FOUNDER / ARCHITECT:
+Toni Mladenovski
+
+PROJECT:
+NOVA Q / EIT / TIE
+
+PROJECT_ORIGIN_DATE:
+18 April 2026
+
+PROTOCOL_VERSION:
+LEVEL2_PROTOCOL_V0.2
+
+PROTOCOL_STATUS:
+PRE_FREEZE_DRAFT
+PROTOCOL_ONLY
+NO_CODE_INCLUDED
+
+DATE:
+2026-10-04
+
+===============================================================================
+1. PURPOSE
+===============================================================================
+
+Level 2 tests two software properties of the frozen restricted-language
+pipeline across short transformation chains:
+
+A. CANONICALIZATION
+   Different valid REV3 representations of the same ordered fact sequence are
+   brought back to the same canonical bytes by the frozen compressor.
+
+B. LOSS PROPAGATION
+   Once a transformation has lost information, later preserving
+   transformations that see only the lossy state never restore TWIN_VALID.
+
+Level 2 is deliberately short.
+
+Level 2 is:
+
+RESTRICTED_LANGUAGE_CHAIN_VALIDATION
+
+Level 2 is NOT:
+
+MEMORY_MODEL_PROOF
+GENERAL_MEMORY_VALIDATION
+GENERAL_SEMANTIC_PRESERVATION_PROOF
+GENERAL_ERROR_CORRECTION
+GENERAL_COMPRESSION_VALIDATION
+PHYSICAL_VALIDATION
+GENERAL_THEOREM
+
+===============================================================================
+2. FROZEN DEPENDENCIES
+===============================================================================
+
+Repository: github.com/eit-orbitos/nova-q-memory-frozen-input
+
+Original input package (V, Q, M_0):
+commit 8b30182f473dda613d041989c833f7795f03e1fa
+M_0 SHA-256 c0f1ffc9bc2679380ee8da77a8e98a0fb2987b606f8b0aaa69a40d4be758d439
+
+Grammar LEVEL0_CONSTRAINED_LANGUAGE_V0.1_REV3:
+commit 56be3b116000c1add857e436ef09171d13511286
+SHA-256 d7a68615f38beac2808936bea9591c2a68fc22e0ae10024159d2a49682252852
+
+Evaluator LEVEL0_EVALUATOR_V0.4:
+commit eaa3593d414556d4197a840723d9296e9969c27b
+level0_extract_v0_4.py SHA-256
+17605981e658565fb5bb0d00798dfad1979436e311d3d117a540e223fe397ff0
+level0_compare_v0_4.py SHA-256
+72788e986723fd8ab2f649809eae6c6d256d7da7f52f81c5f6ad6e3c6b157f61
+
+Compressor LEVEL1_COMPRESSOR_V0.1:
+commit 2516d18f2213891ac056108f8a65f9dd4566a098
+level1_compressor_v0_1.py SHA-256
+0ed99cb21048e8e1f8c9e526469c23697d5b6b414401e85120f5c26e360dba81
+
+Level 1 result (LEVEL1_PRIMARY_PASS):
+commit 9831e14d8ea5d8aba241ad6aae89af5767b7e8c1
+
+None of these artifacts may be modified during Level 2.
+The counting rule, encoding rule and fail-closed conventions of
+LEVEL1_PROTOCOL_V0.4 (sections 16 and 17) apply unchanged.
+
+===============================================================================
+3. NEW PROGRAMS
+===============================================================================
+
+Level 2 adds exactly two deterministic Python programs.
+
+EXPANDER
+    reads:  one valid REV3 text + the frozen grammar JSON
+    option: --mode A  or  --mode B
+    writes: a valid REV3 text that
+            - expresses the same ordered fact sequence as its input,
+            - is strictly longer than its input when the input is canonical,
+            - differs between mode A and mode B.
+    The implementer chooses how the two modes differ (aliases, verbose
+    productions, approximation markers, number forms) and declares it before
+    freeze.
+
+LOSSY TRANSFORMER
+    reads:  one valid REV3 text + the frozen grammar JSON
+    rule:   LOSS_MODE_QUALIFIER_DROP (the only loss rule in Level 2):
+            every fact whose qualifier is APPROX is re-emitted as EXACT, with
+            the approximation marker removed; every other fact is re-emitted
+            with unchanged semantics; clause order is preserved.
+    writes: the resulting REV3 text.
+
+Command line for both programs:
+    --grammar <path> --input <path> --out <path>   (expander: plus --mode)
+    valid input   -> candidate written to --out, exit 0, stdout empty
+    invalid input -> non-zero exit, stdout empty, no --out file, reason on
+                     stderr only
+
+Both programs: Python standard library only; no network; no subprocess; read
+only the declared input and the grammar; verify the grammar SHA-256 before use;
+same input bytes -> same output bytes.
+
+Neither program may read V, Q, the comparator, any reference V_i, any witness,
+or any earlier output or verdict.
+
+Each program must declare whether it imports level0_extract_v0_4.py or
+level1_compressor_v0_1.py. If it does, SHARED_PARSER_LIMITATION = ACTIVE for
+that program and is recorded in the result.
+
+===============================================================================
+4. INPUTS
+===============================================================================
+
+Level 2 uses exactly five distinct valid inputs.
+
+L2_I01 = ORIGINAL_M0            (reference V_1 = original frozen V)
+L2_I02 = HELD_OUT_CONTROL_1
+L2_I03 = HELD_OUT_CONTROL_2
+L2_I04 = HELD_OUT_CONTROL_3
+L2_I05 = HELD_OUT_CONTROL_4
+
+Each held-out control has its own reference V_i.
+Every V_i (i = 2..5) must differ from the original V in at least one fact;
+otherwise PROTOCOL_ERROR.
+
+Control envelope: as LEVEL1_PROTOCOL_V0.4 section 7 (any text accepted by
+frozen REV3 with extractor status PARSED), with one added requirement on the
+set of controls:
+
+LOSS CLASS of an input:
+    LOSS_PRESENT        iff V_i contains at least one APPROX fact
+    NO_LOSS_AVAILABLE   iff V_i contains no APPROX fact
+
+Among the four held-out controls, exactly two are LOSS_PRESENT and exactly two
+are NO_LOSS_AVAILABLE. The original M_0 is LOSS_PRESENT (it contains two APPROX
+facts).
+
+No input may contain two facts that differ only in their qualifier (same
+subject, relation, value and unit, one APPROX and one EXACT). This guarantees
+that the qualifier drop never creates a duplicate fact, so the lossy state of
+every input is valid REV3. An input that violates this is a PROTOCOL_ERROR.
+
+New controls are authored for Level 2. The Level 1 controls are public and
+may not be reused.
+
+===============================================================================
+5. STATES COMPUTED FOR EVERY INPUT
+===============================================================================
+
+For each input i, with every arrow a fresh process:
+
+POSITIVE BRANCH
+
+S0   = INPUT_i
+C1   = COMPRESS(S0)
+EA   = EXPAND(C1, mode A)
+EB   = EXPAND(C1, mode B)
+C2A  = COMPRESS(EA)
+C2B  = COMPRESS(EB)
+
+LOSSY BRANCH
+
+L0   = LOSSY(C1)
+LEA  = EXPAND(L0, mode A)
+LEB  = EXPAND(L0, mode B)
+LCA  = COMPRESS(LEA)
+LCB  = COMPRESS(LEB)
+
+Every state above is derived from a valid REV3 text, so every program
+execution in both branches must succeed (exit 0, output written).
+
+If any program refuses a state or produces no output:
+
+CHAIN_OPERATIONAL_FAILURE
+
+and the input fails. A refusal is never counted as a detected loss.
+
+===============================================================================
+6. POSITIVE CHECKS — CANONICALIZATION
+===============================================================================
+
+For every input i, all of the following are required.
+
+P1. C1, EA, EB, C2A, C2B all exist (every program exits 0).
+P2. Frozen V0.4 scores C1, EA, EB, C2A and C2B against V_i: TWIN_VALID each.
+P3. ORDER_PRESERVED: the fact sequence reported by the frozen extractor is
+    identical for C1, EA, EB, C2A and C2B.
+P4. EA != EB, EA != C1, EB != C1 (bytes).
+P5. length(EA) > length(C1) and length(EB) > length(C1).
+P6. C2A == C1 byte-for-byte.
+P7. C2B == C1 byte-for-byte.
+P8. For held-out controls: C1 is NOT TWIN_VALID against the original V
+    (anti-constant check).
+
+CANONICAL_FORM_UNIQUENESS
+=
+REQUIRED_SOFTWARE_PROPERTY_OF(
+    REV3,
+    FROZEN_COMPRESSOR,
+    ORDERED_FACT_SEQUENCE
+)
+
+CANONICALIZATION_DOMAIN = ORDERED_SEMANTIC_FACT_SEQUENCE
+
+The domain is the ordered sequence, not the unordered fact set, because the
+frozen compressor preserves clause order.
+
+Claim under test:
+
+SAME ORDERED FACT SEQUENCE
++ DIFFERENT VALID REV3 REPRESENTATIONS
+-> SAME CANONICAL BYTES
+
+This is a tested software property on a finite input set.
+It is NOT a general theorem.
+
+===============================================================================
+7. LOSSY CHECKS — PROPAGATION
+===============================================================================
+
+Every verdict below is against V_i.
+
+For an input of class LOSS_PRESENT, all of the following are required.
+
+N0. L0, LEA, LEB, LCA and LCB are all produced (exit 0), and the frozen
+    extractor returns status PARSED for each of them.
+N1. L0 is NOT TWIN_VALID.
+N2. LEA, LEB, LCA and LCB are each NOT TWIN_VALID.
+
+If N0 does not hold:
+
+CHAIN_OPERATIONAL_FAILURE  (the input fails; this is not a detected loss)
+
+If any of L0, LEA, LEB, LCA, LCB is TWIN_VALID:
+
+LOSS_HEALING_FAILURE  (or evaluator false accept, if it is L0)
+
+For an input of class NO_LOSS_AVAILABLE, all of the following are required.
+
+F1. L0 exists and is TWIN_VALID.
+F2. LEA, LEB, LCA and LCB exist and are each TWIN_VALID.
+F3. LCA == C1 and LCB == C1 byte-for-byte.
+
+If any of these fails:
+
+FALSE_ALARM_FAILURE
+
+This is the no-false-alarm control: where the loss rule has nothing to remove,
+the chain must stay valid.
+
+===============================================================================
+8. HOW A DETECTED LOSS IS REPORTED
+===============================================================================
+
+The only loss rule in Level 2 produces valid REV3. A loss is therefore
+detected only semantically:
+
+LOSS_DETECTED_SEMANTICALLY
+    the state is valid REV3 (extractor status PARSED) and the trial verdict is
+    not TWIN_VALID
+
+A state that is UNRESOLVED or was not produced is NOT a detected loss. It is a
+CHAIN_OPERATIONAL_FAILURE (section 5; check N0 in section 7). Syntactic
+detection would belong only to a separately declared syntax-destroying loss
+rule, which Level 2 does not have.
+
+No specific verdict is required. Frozen V0.4 may legitimately return
+INVALID_TRANSFORMATION (fact level FACT_INVENTED) or INVARIANT_LOST; either
+satisfies N1 and N2. The verdict of every lossy-branch state is recorded.
+
+Reported, not scored:
+SHORTER_BUT_NOT_TWIN_i = length(L0) < length(C1) and L0 is NOT TWIN_VALID
+
+===============================================================================
+9. STATEMENT ON THE RISK OF THE LOSSY BRANCH
+===============================================================================
+
+The no-healing requirement is low-risk by construction.
+
+A deterministic program that sees only the lossy state has no source from
+which to recover the removed qualifier. A pass is therefore expected.
+
+The branch is kept as a demonstration of one point:
+
+A SHORTER REPRESENTATION DOES NOT IMPLY A PRESERVED ONE.
+
+Example: "approximately 250 ms" and "250 ms" carry the same number, but under
+the frozen semantics APPROX != EXACT, so the shorter text is not a twin.
+
+A pass of this branch must not be presented as evidence of error correction
+or of difficulty.
+
+===============================================================================
+10. DETERMINISM
+===============================================================================
+
+Every program execution on every state is performed twice, each in a fresh
+process. The two outputs must be byte-identical.
+
+Otherwise DETERMINISM_FAIL for that input, and the input fails.
+
+===============================================================================
+11. INVALID-INPUT CONTROL
+===============================================================================
+
+One invalid input, outside the frozen REV3 language, is part of the hidden
+control package.
+
+It is given to the expander (mode A and mode B) and to the lossy transformer.
+
+Required each time:
+non-zero exit AND stdout byte length 0 AND no output file created.
+
+If any program produces a candidate: INVALID_INPUT_CONTROL = FAIL.
+
+===============================================================================
+12. FEASIBILITY CERTIFICATE FOR CONTROLS
+===============================================================================
+
+For each held-out control the hidden package contains two witness expansions
+W_A and W_B of the canonical form of that control such that:
+
+- frozen V0.4 scores W_A and W_B TWIN_VALID against V_i;
+- W_A != W_B;
+- both are strictly longer than the canonical form;
+- the extractor reports the same ordered fact sequence for both.
+
+The witnesses show only that two distinct longer valid representations exist.
+They are never given to any program and are revealed with the controls.
+
+A control without valid witnesses is a PROTOCOL_ERROR, not a program failure.
+
+===============================================================================
+13. ORDER OF WORK AND COMMIT-REVEAL
+===============================================================================
+
+FREEZE_PROTOCOL
+-> BUILD_EXPANDER_AND_LOSSY_TRANSFORMER
+-> SOURCE_REVIEW
+-> FREEZE_PROGRAMS (public commit)
+-> AUTHOR_CONTROLS
+-> COMMIT_CONTROL_PACKAGE_HASH (public commit)
+-> RUN
+-> REVEAL_CONTROLS
+-> SCORE_AND_PUBLISH
+
+Controls are authored only after the program freeze commit.
+No program is run on a control before the commitment commit.
+Only the SHA-256 of the control package is public before the run.
+If the revealed package does not reproduce the committed hash:
+CONTROL_COMMITMENT_INVALID and LEVEL2_PRIMARY_PASS is prohibited.
+
+The commitment proves the package did not change after commitment.
+It does not prove the controls were authored without bias.
+
+===============================================================================
+14. SOURCE REVIEW BEFORE PROGRAM FREEZE
+===============================================================================
+
+Both programs are reviewed for:
+
+fixture-specific constants
+fingerprints of M_0 or of any control
+precomputed outputs
+access to V, Q, references or the comparator
+network-capable modules, subprocess, undeclared file reads
+nondeterminism and persisted state
+for the lossy transformer: any change other than the declared rule
+for the expander: any change of the ordered fact sequence
+
+Required outcome before controls are authored: SOURCE_REVIEW = PASS.
+Any change to a source after review invalidates the review.
+
+===============================================================================
+15. ENVIRONMENT
+===============================================================================
+
+Python; standard library only.
+Network use prohibited; verified by source review; OS-level isolation is used
+and recorded if available, otherwise NETWORK_ISOLATION =
+NOT_ENFORCED_AT_OS_LEVEL is recorded as a limitation.
+Python version and operating environment are recorded.
+Scoring is done from a fresh clone of the repository; the hashes of all frozen
+files are checked before the run.
+
+===============================================================================
+16. PRIMARY ENDPOINT
+===============================================================================
+
+INPUT_PASS_i
+iff
+    P1..P8 hold
+    AND (N0, N1 and N2 hold, if the input is LOSS_PRESENT)
+    AND (F1..F3 hold, if the input is NO_LOSS_AVAILABLE)
+    AND determinism holds for every execution
+    AND no protocol violation
+
+LEVEL2_PRIMARY_PASS
+iff
+    INPUT_PASS_1 AND INPUT_PASS_2 AND INPUT_PASS_3 AND INPUT_PASS_4
+    AND INPUT_PASS_5
+    AND INVALID_INPUT_CONTROL = PASS
+    AND the control commitment is valid
+    AND no PROTOCOL_ERROR
+
+Anything less: LEVEL2_PRIMARY_FAIL.
+
+The run happens once. No rerun, no replacement of an undesirable result, no
+selection among results. A failure is preserved and published.
+
+Five inputs are a finite protocol set. The result is not a success rate.
+
+===============================================================================
+17. ROLES
+===============================================================================
+
+FOUNDER / FINAL GOVERNANCE: Toni Mladenovski
+PROTOCOL DRAFTING: Claude (at the project's request)
+PROTOCOL REVIEW: ChatGPT (V0.1 reviewed: one blocker, fixed in V0.2);
+Kimi if assigned by the founder
+PROGRAM IMPLEMENTATION (expander, lossy transformer): ChatGPT
+SOURCE REVIEW, CONTROL AUTHOR, OPERATOR, SCORER: Claude
+
+ROLE CONCENTRATION LIMITATION:
+Claude drafts this protocol and is also source reviewer, control author,
+operator and scorer. This is wider than in Level 1 and is a methodological
+limitation.
+
+Mitigations: review of this protocol by a party other than its drafter;
+deterministic public programs; public hashes; commit-reveal; publication of
+all controls, states and verdicts; third parties can rerun everything.
+
+This limitation must stay attached to any Level 2 result.
+
+===============================================================================
+18. REQUIRED RECORDS AND ARTIFACTS
+===============================================================================
+
+Per input: input and reference hashes, loss class, and for every state of
+section 5: both execution exit codes, output SHA-256, byte length, semantic
+character length, determinism result, extractor status and trial verdict; the
+results of P1..P8, N0..N2 or F1..F3;
+the input status.
+
+Per invalid-input execution: exit code, stdout byte length, whether a
+candidate was created.
+
+Published package: this protocol, both program sources with hashes, the source
+review record, the freeze record, the control commitment, the revealed control
+package with witnesses, every input, reference and state, all extractor and
+comparator outputs, the aggregate result record, the environment record and
+SHA256SUMS. No failed evidence may be removed.
+
+===============================================================================
+19. PERMITTED CONCLUSION AFTER A PASS
+===============================================================================
+
+"Under frozen LEVEL2_PROTOCOL_V0.2, for five distinct valid REV3 inputs, two
+different expansions of the canonical text were returned by the frozen
+compressor to the same canonical bytes, with the ordered fact sequence
+preserved. For the inputs containing approximate facts, the output of a
+qualifier-dropping transformer and every state derived from it were not
+TWIN_VALID. For the inputs with no approximate facts, the same chain stayed
+TWIN_VALID. All programs were byte-deterministic and failed closed on the
+invalid input."
+
+No stronger conclusion follows.
+
+===============================================================================
+20. PROHIBITED CLAIMS
+===============================================================================
+
+A Level 2 pass does NOT establish:
+
+MEMORY IS PROVEN
+NOVA Q MEMORY THEORY IS VALIDATED
+CANONICAL FORM UNIQUENESS AS A GENERAL THEOREM
+GENERAL SEMANTIC MEMORY
+FREE-TEXT MEMORY
+GENERAL ERROR CORRECTION OR RECOVERY OF LOST INFORMATION
+GENERAL COMPRESSION ABILITY
+A SUCCESS RATE
+PHYSICAL INFORMATION LAW
+AGI / ASI
+
+All representations stay inside a language whose semantic structure is fixed
+in advance. Level 2 does not test whether meaning survives in a representation
+outside that language. That question begins at Level 3.
+
+AI agreement is not validation.
+
+===============================================================================
+21. FAILURE INTERPRETATION
+===============================================================================
+
+A Level 2 failure means that the frozen programs did not satisfy this protocol
+on the tested inputs. It does not by itself invalidate the input package, the
+grammar, the evaluator or the Level 1 result, unless separate evidence shows a
+defect in them. A defect found in a frozen artifact is recorded, not patched;
+any repair needs a new version, new hashes and a new cycle.
+
+===============================================================================
+22. STATUS
+===============================================================================
+
+LEVEL2_PROTOCOL_V0.2 = PRE_FREEZE_DRAFT
+EXPANDER = NOT_CREATED
+LOSSY_TRANSFORMER = NOT_CREATED
+CONTROL_PACKAGE = NOT_CREATED
+LEVEL2_RUNS = NOT_STARTED
+
+NEXT ACTION:
+PROTOCOL REVIEW BY A PARTY OTHER THAN THE DRAFTER
+-> FOUNDER FREEZE DECISION
+-> PUBLIC PROTOCOL COMMIT
+-> ONLY THEN BUILD THE TWO PROGRAMS
+
+===============================================================================
+END LEVEL2_PROTOCOL_V0.2
+===============================================================================
